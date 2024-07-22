@@ -1,5 +1,6 @@
-const path = require('path'); // Asegúrate de que esta línea esté incluida
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // Asegúrate de que este paquete esté instalado
 
 module.exports = {
   mode: 'development', // Cambia a 'production' para el entorno de producción
@@ -28,6 +29,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'public', 'index.html') // Ruta correcta al archivo HTML
+    }),
     new MiniCssExtractPlugin({
       filename: 'styles.css'
     })
@@ -35,6 +39,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 8080
+    port: 8080,
+    historyApiFallback: true // Maneja el enrutamiento del lado del cliente
   }
 };
