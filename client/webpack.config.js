@@ -1,9 +1,13 @@
+const path = require('path'); // Asegúrate de que esta línea esté incluida
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
   mode: 'development', // Cambia a 'production' para el entorno de producción
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
