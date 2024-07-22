@@ -1,21 +1,25 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const apiRoutes = require('./routes/api');
-
 const app = express();
-const PORT = process.env.PORT || 5000;
+const port = 5000; // Puedes cambiar el puerto si es necesario
 
-// Middleware
+// Middleware para manejar JSON
 app.use(express.json());
-app.use('/api', apiRoutes);
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/mydatabase', {
+// Conectar a la base de datos MongoDB
+mongoose.connect('mongodb://localhost:27017/mi-database', {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}).then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
+})
+  .then(() => console.log('Conectado a MongoDB'))
+  .catch(err => console.error('Error de conexión a MongoDB:', err));
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+// Definir una ruta simple
+app.get('/', (req, res) => {
+  res.send('¡Hola desde el servidor!');
+});
+
+// Iniciar el servidor
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
 });
