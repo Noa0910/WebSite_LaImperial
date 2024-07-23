@@ -8,7 +8,7 @@ import AboutUs from './components/AboutUs';
 import Contact from './components/Contact';
 import VisitVirtualPage from './components/VisitVirtualPage';
 import ShoppingCart from './components/ShoppingCart';
-import CheckoutPage from './components/CheckoutPage';
+import CheckoutPage from './components/checkoutPage';
 
 const App = () => {
     return (
