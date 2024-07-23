@@ -31,10 +31,14 @@ module.exports = {
       filename: 'styles.css'
     })
   ],
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 8080
+    port: 8080,
+    historyApiFallback: true // Añadido para manejar el enrutamiento del lado del cliente
   },
   performance: {
     maxAssetSize: 244000,
