@@ -1,14 +1,13 @@
+// webpack.config.js
+
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // Asegúrate de que este paquete esté instalado
 
 module.exports = {
-  mode: 'development', // Cambia a 'production' para el entorno de producción
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -25,13 +24,25 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              context: 'src',
+              outputPath: 'images',
+              publicPath: 'images',
+              useRelativePaths: true
+            },
+          },
+        ],
+      },
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public', 'index.html') // Ruta correcta al archivo HTML
-    }),
     new MiniCssExtractPlugin({
       filename: 'styles.css'
     })
@@ -39,7 +50,6 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 8080,
-    historyApiFallback: true // Maneja el enrutamiento del lado del cliente
+    port: 8080
   }
 };
