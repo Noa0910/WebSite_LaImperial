@@ -1,15 +1,12 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
-  mode: 'development', // Cambia a 'production' para la construcción final
+  mode: 'development', // Cambia a 'production' para construcción final
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    assetModuleFilename: 'images/[name][ext]'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -26,10 +23,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/,
-        type: 'asset/resource'
       }
     ]
   },
@@ -38,13 +31,6 @@ module.exports = {
       filename: 'styles.css'
     })
   ],
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new CssMinimizerPlugin(),
-      new TerserPlugin()
-    ],
-  },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,

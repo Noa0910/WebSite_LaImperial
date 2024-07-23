@@ -1,48 +1,46 @@
-/* src/styles/App.css */
-
 .main-page {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+    font-family: Arial, sans-serif;
+    padding: 20px;
 }
 
 .hero {
-  background: url('../images/hero-image.jpg') no-repeat center center;
-  background-size: cover;
-  color: white;
-  text-align: center;
-  padding: 50px 20px;
+    background: url('/path/to/hero-image.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
 }
 
 .hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
+    font-size: 3rem;
+    margin-bottom: 10px;
 }
 
 .hero p {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .hero button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #ff6600;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .featured-dishes, .promotions {
-  padding: 20px;
+    padding: 20px;
 }
 
 .featured-dishes h2, .promotions h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .dishes-list, .promotions-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
