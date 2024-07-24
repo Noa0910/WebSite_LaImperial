@@ -1,14 +1,26 @@
-/* Estilos adicionales o personalizados */
+/* Fondo Principal */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+  background-color: #F5F5DC; /* Beige Claro */
+  color: #003366; /* Azul Oscuro */
 }
 
-.main-page {
-  background-color: #f5f5dc; /* Fondo beige */
-  min-height: 100vh;
-  padding: 20px;
+/* Estilo para botones y enlaces */
+button, .btn, a {
+  background-color: #D4A017; /* Amarillo Ocre */
+  color: #FFFFFF; /* Blanco */
 }
 
-/* Otros estilos personalizados */
+button:hover, .btn:hover, a:hover {
+  background-color: #B7410E; /* Rojo Arcilla */
+  color: #FFFFFF; /* Blanco */
+}
+
+/* Estilo para encabezados */
+h1, h2, h3, h4, h5, h6 {
+  color: #2E8B57; /* Verde Esmeralda */
+}
+
+/* Estilo para textos secundarios */
+.secondary-text {
+  color: #FFFFFF; /* Blanco */
+}

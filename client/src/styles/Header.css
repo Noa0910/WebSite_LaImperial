@@ -1,0 +1,68 @@
+/* Encabezado Superior */
+.top-bar {
+    background-color: #FDFEFE   ; /* Beige Claro */
+    color: #003366; /* Azul Oscuro */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center;
+    padding: 35px; /* Aumenta la altura del encabezado */
+}
+
+/* Contenedor de iconos de redes sociales y carrito */
+.top-bar .icon-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Ajusta el espacio entre iconos si es necesario */
+}
+
+/* Estilo de íconos de redes sociales y carrito */
+.top-bar .icon-container a {
+    color: #003366; /* Azul Oscuro */
+    font-size: 1.5rem;
+    text-decoration: none; /* Elimina subrayado en enlaces */
+    background: none; /* Elimina el fondo */
+    border: none; /* Elimina bordes si los hay */
+    padding: 0; /* Elimina el padding si lo hay */
+}
+
+/* Estilo de logo */
+.top-bar .logo-img {
+    margin: 0 300px; /* Ajusta el espacio alrededor del logo */
+}
+
+.top-bar .logo-img img {
+    height: 60px; /* Ajusta el tamaño del logo si es necesario */
+}
+
+/* Barra de Navegación */
+.navbar {
+    background-color: #FDFEFE  ; /* Beige Claro */
+}
+
+.navbar-brand {
+    display: none; /* Ocultar el texto "Mi Restaurante" */
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px; /* Ajusta el margen entre los elementos del menú */
+}
+
+.navbar-nav .nav-link {
+    color: #003366; /* Azul Oscuro */
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #D4A017; /* Amarillo Ocre */
+}
+
+/* Botón Toggler */
+.navbar-toggler-icon {
+    background-color: transparent; /* Eliminar el fondo del ícono del menú móvil */
+}

@@ -1,11 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaShoppingCart } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa Bootstrap
+import '../styles/Header.css'; // Asegúrate de importar los estilos
 
 const Header = () => {
     return (
-        <header>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <>
+            {/* Encabezado Superior */}
+            <header className="top-bar">
+                <div className="icon-container">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                        <FaFacebookF />
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                        <FaTwitter />
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <FaInstagram />
+                    </a>
+                </div>
+                <div className="logo-img">
+                    <img src="./images/logo_main.jpg" alt="Logo del Restaurante" />
+                </div>
+                <div className="icon-container">
+                    <a href="/cart">
+                        <FaShoppingCart />
+                    </a>
+                </div>
+            </header>
+
+            {/* Barra de Navegación */}
+            <nav className="navbar navbar-expand-lg navbar-light ">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">Mi Restaurante</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +59,7 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
-        </header>
+        </>
     );
 };
 
