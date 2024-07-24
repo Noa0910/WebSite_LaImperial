@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importa Bootstrap
 import App from './App';
-import './styles/tailwind.css';
-import './styles/App.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));

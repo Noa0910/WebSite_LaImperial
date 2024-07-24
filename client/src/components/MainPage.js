@@ -1,10 +1,15 @@
 import React from 'react';
+import '../styles/App.css'; // Importa el archivo CSS
 
 const MainPage = () => {
     return (
-        <div>
-            <h1>Bienvenidos a Nuestro Restaurante</h1>
-            <p>Disfruta de nuestros platos deliciosos y un ambiente acogedor.</p>
+        <div className="main-page">
+            <section className="hero">
+                <h1>Bienvenidos a Nuestro Restaurante</h1>
+                <p>Disfruta de los mejores platos y experiencias.</p>
+                <button>Descubre Más</button>
+            </section>
+            {/* Agregar más secciones aquí */}
         </div>
     );
 };
