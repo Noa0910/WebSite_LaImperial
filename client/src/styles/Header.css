@@ -1,11 +1,11 @@
 /* Encabezado Superior */
 .top-bar {
-    background-color: #FDFEFE   ; /* Beige Claro */
+    background-color: #660022; /* Color de fondo */
     color: #003366; /* Azul Oscuro */
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
+    justify-content: space-between; /* Distribuye el contenido a los extremos */
     align-items: center;
-    padding: 35px; /* Aumenta la altura del encabezado */
+    padding: 30px 45px; /* Añade padding en los extremos */
 }
 
 /* Contenedor de iconos de redes sociales y carrito */
@@ -17,8 +17,8 @@
 
 /* Estilo de íconos de redes sociales y carrito */
 .top-bar .icon-container a {
-    color: #003366; /* Azul Oscuro */
-    font-size: 1.5rem;
+    color: #bad1c9; /* Color de los iconos */
+    font-size: 2rem;
     text-decoration: none; /* Elimina subrayado en enlaces */
     background: none; /* Elimina el fondo */
     border: none; /* Elimina bordes si los hay */
@@ -27,7 +27,9 @@
 
 /* Estilo de logo */
 .top-bar .logo-img {
-    margin: 0 300px; /* Ajusta el espacio alrededor del logo */
+    flex: 1; /* Ocupa el espacio restante para centrar el logo */
+    display: flex;
+    justify-content: center; /* Centra el logo horizontalmente */
 }
 
 .top-bar .logo-img img {
@@ -36,12 +38,9 @@
 
 /* Barra de Navegación */
 .navbar {
-    background-color: #FDFEFE  ; /* Beige Claro */
+    background-color: #ebe5ce; /* Beige Claro */
 }
 
-.navbar-brand {
-    display: none; /* Ocultar el texto "Mi Restaurante" */
-}
 
 .navbar-nav {
     display: flex;
@@ -50,12 +49,15 @@
 }
 
 .navbar-nav .nav-item {
-    margin: 0 10px; /* Ajusta el margen entre los elementos del menú */
+    margin: 0 15px; /* Ajusta el margen entre los elementos del menú */
 }
 
 .navbar-nav .nav-link {
-    color: #003366; /* Azul Oscuro */
+    color: #939490; /* Azul Oscuro */
     text-transform: uppercase;
+    font-weight: 600; /* Hace el texto más grueso */
+    font-family: 'Arial', sans-serif; /* Cambia la fuente si es necesario */
+    font-size: 0.9rem; /* Ajusta el tamaño de la fuente */
 }
 
 .navbar-nav .nav-link:hover {

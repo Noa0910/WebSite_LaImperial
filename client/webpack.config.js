@@ -23,6 +23,18 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              context: 'src' // Mantén la estructura de directorios
+            }
+          }
+        ]
       }
     ]
   },
@@ -32,7 +44,7 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'public'), // Asegúrate de que esta ruta apunte a la carpeta pública
+    contentBase: path.join(__dirname, 'public'),
     compress: true,
     port: 8080
   },

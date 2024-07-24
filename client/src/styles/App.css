@@ -11,8 +11,9 @@ button, .btn, a {
 }
 
 button:hover, .btn:hover, a:hover {
-  background-color: #B7410E; /* Rojo Arcilla */
+  background-color: #b7410e0b; /* Rojo Arcilla */
   color: #FFFFFF; /* Blanco */
+  border-radius: 10px;
 }
 
 /* Estilo para encabezados */

@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa Bootstrap
-import '../styles/Header.css'; // Asegúrate de importar los estilos
+import '../styles/Header.css'; 
+import logo from '../images/logo.png' ;
+
 
 const Header = () => {
     return (
@@ -22,7 +24,7 @@ const Header = () => {
                     </a>
                 </div>
                 <div className="logo-img">
-                    <img src="./images/logo_main.jpg" alt="Logo del Restaurante" />
+                    <img src={logo} alt="Logo del Restaurante" />
                 </div>
                 <div className="icon-container">
                     <a href="/cart">
@@ -34,7 +36,7 @@ const Header = () => {
             {/* Barra de Navegación */}
             <nav className="navbar navbar-expand-lg navbar-light ">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">Mi Restaurante</Link>
+    
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
