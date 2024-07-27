@@ -1,70 +1,70 @@
-/* Encabezado Superior */
-.top-bar {
-    background-color: #660022; /* Color de fondo */
-    color: #003366; /* Azul Oscuro */
-    display: flex;
-    justify-content: space-between; /* Distribuye el contenido a los extremos */
-    align-items: center;
-    padding: 30px 45px; /* Añade padding en los extremos */
-}
-
-/* Contenedor de iconos de redes sociales y carrito */
-.top-bar .icon-container {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Ajusta el espacio entre iconos si es necesario */
-}
-
-/* Estilo de íconos de redes sociales y carrito */
-.top-bar .icon-container a {
-    color: #bad1c9; /* Color de los iconos */
-    font-size: 2rem;
-    text-decoration: none; /* Elimina subrayado en enlaces */
-    background: none; /* Elimina el fondo */
-    border: none; /* Elimina bordes si los hay */
-    padding: 0; /* Elimina el padding si lo hay */
-}
-
-/* Estilo de logo */
-.top-bar .logo-img {
-    flex: 1; /* Ocupa el espacio restante para centrar el logo */
-    display: flex;
-    justify-content: center; /* Centra el logo horizontalmente */
-}
-
-.top-bar .logo-img img {
-    height: 60px; /* Ajusta el tamaño del logo si es necesario */
-}
-
 /* Barra de Navegación */
 .navbar {
-    background-color: #ebe5ce; /* Beige Claro */
+    background-color: rgba(23, 20, 20, 0.497) !important; /* Fondo semitransparente oscuro */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espacio entre el logo/texto y el menú */
+    padding: 0 15px; /* Ajusta el padding si es necesario */
 }
 
+.navbar-brand-container {
+    display: flex;
+    align-items: center;
+}
 
+.logo-img {
+    height: 60px; /* Ajusta el tamaño del logo */
+    border-radius: 50%;
+    margin-right: 15px; /* Espacio entre el logo y el texto */
+}
+
+.restaurant-name {
+    color: white !important; /* Color del texto del restaurante */
+    font-size: 1.5rem; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita */
+    font-family: 'Bona Nova', serif; /* Usa la fuente Bona Nova */
+}
+
+/* Estilo del menú de navegación */
 .navbar-nav {
     display: flex;
-    justify-content: center;
+    align-items: center; /* Alinea verticalmente los ítems */
+    justify-content: flex-end; /* Alinea el menú a la derecha */
     flex-grow: 1;
 }
 
 .navbar-nav .nav-item {
     margin: 0 15px; /* Ajusta el margen entre los elementos del menú */
+    position: relative; /* Necesario para posicionar el separador */
 }
 
 .navbar-nav .nav-link {
-    color: #939490; /* Azul Oscuro */
+    color: white !important; /* Color de los enlaces del menú */
     text-transform: uppercase;
-    font-weight: 600; /* Hace el texto más grueso */
-    font-family: 'Arial', sans-serif; /* Cambia la fuente si es necesario */
+    font-weight: bold; /* Aplica negrita */
+    font-family: 'Bona Nova', serif; /* Usa la fuente Bona Nova */
     font-size: 0.9rem; /* Ajusta el tamaño de la fuente */
 }
 
 .navbar-nav .nav-link:hover {
-    color: #D4A017; /* Amarillo Ocre */
+    color: #D4A017 !important; /* Amarillo Ocre */
 }
 
-/* Botón Toggler */
-.navbar-toggler-icon {
-    background-color: transparent; /* Eliminar el fondo del ícono del menú móvil */
+/* Separador vertical */
+.navbar-nav .separator {
+    width: 2px; /* Ancho del separador */
+    background-color: white !important; /* Color del separador */
+    height: 24px; /* Altura del separador */
+    margin: 0 15px; /* Espacio alrededor del separador */
+}
+
+/* Estilo del botón del carrito */
+.cart-button {
+    background: none !important; /* Elimina el fondo del botón */
+    border: none !important; /* Elimina el borde del botón */
+    color: white !important; /* Color del ícono */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 1.5rem; /* Tamaño del ícono */
+    display: flex;
+    align-items: center;
 }

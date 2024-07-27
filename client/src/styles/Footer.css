@@ -1,0 +1,76 @@
+/* Estilo para el Footer */
+.footer {
+    background-color: rgba(23, 20, 20, 0.497); /* Color de fondo */
+    color: #ebe5ce; /* Beige Claro */
+    padding: 20px 45px;
+    text-align: center;
+    position: relative; /* Para usar junto con el contenedor principal */
+    width: 100%; /* Ocupa todo el ancho de la página */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.contact-info, .hours, .footer-links, .newsletter {
+    flex: 1;
+    margin: 10px;
+}
+
+.contact-info h3, .hours h3, .footer-links h3, .newsletter h3 {
+    color: #ebe5ce; /* Beige Claro */
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    color: #faf9f6; /* Beige Claro */
+    text-decoration: none;
+}
+
+.footer-links ul li a:hover {
+    color: #D4A017; /* Amarillo Ocre */
+}
+
+.newsletter form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsletter input[type="email"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    background-color: #c1e3d4; /* Amarillo Ocre */
+    color: #660022;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #b7410e0b; /* Rojo Arcilla */
+}
+
+.footer-bottom {
+ 
+    color: #ebe5ce; /* Beige Claro */
+    padding: 10px 0;
+    font-size: 0.8rem;
+}

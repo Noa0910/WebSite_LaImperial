@@ -1,0 +1,113 @@
+/* Página Principal */
+.main-page {
+    display: flex;
+    flex-direction: column; /* Mantén la dirección de columna */
+    align-items: center; /* Centra horizontalmente el contenido */
+    width: 100%; /* Asegura que el contenedor principal ocupe todo el ancho */
+    background-color: rgba(248, 244, 227, 0.8); /* Fondo beige claro semi-transparente */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+    min-height: 100vh; /* Asegura que el contenedor ocupe al menos el alto de la ventana */
+}
+
+/* Contenido Central */
+.central-content {
+    border-radius: 10px;
+    text-align: center; /* Centra el texto */
+    width: 100%; /* Asegura que ocupe todo el ancho del contenedor principal */
+    max-width: 1200px; /* Opcional: limita el ancho máximo del contenido */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+    margin: 20px 0; /* Espacio arriba y abajo */
+    padding: 20px; /* Espacio interno */
+}
+
+.central-content h1 {
+    font-size: 2.5rem;
+    color: #333; /* Color de texto */
+    margin-bottom: 20px;
+}
+
+.central-content p {
+    font-size: 1.2rem;
+    color: #660022; /* Azul Oscuro */
+    margin-bottom: 20px;
+}
+
+/* Botón del Menú */
+.menu-button {
+    background-color: #660022; /* Color del botón */
+    color: #ebe5ce; /* Beige Claro */
+    padding: 10px 20px;
+    text-decoration: none; /* Elimina el subrayado */
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: 'Bona Nova', serif; /* Usa la fuente Bona Nova */
+}
+
+.menu-button:hover {
+    background-color: #D4A017; /* Amarillo Ocre para el hover */
+}
+
+/* Sección del Carrusel */
+.placeholder-section {
+    border-radius: 10px;
+    text-align: center;
+    width: 100%; /* Asegura que ocupe el ancho completo */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+    padding: 20px; /* Espacio interno */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+/* Estilo para el Carrusel */
+.carousel-inner img {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    height: 400px; /* Ajusta el alto a 400px, cambia este valor según lo necesites */
+    object-fit: cover; /* Asegura que las imágenes cubran el contenedor sin distorsión */
+    border-radius: 10px; /* Bordes redondeados para las imágenes */
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para los controles */
+    border-radius: 50%; /* Redondea los controles */
+}
+
+/* Sección Principal de Contenidos (Testimonios y Mapa) */
+.main-content {
+    display: flex; /* Usa flexbox para alinear los elementos en columnas */
+    width: 100%; /* Asegura que ocupe todo el ancho del contenedor principal */
+    max-width: 1200px; /* Opcional: limita el ancho máximo del contenedor */
+    margin: 20px auto; /* Centra horizontalmente y agrega espacio arriba y abajo */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+}
+
+/* Sección de Testimonios */
+.testimonials-section {
+    width: 50%; /* Ocupa el 50% del ancho del contenedor principal */
+    padding: 20px; /* Espacio interno */
+    /* Quitar el fondo blanco */
+    background-color: transparent; /* Fondo transparente */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center; /* Centra el texto */
+}
+
+.testimonials-section h2 {
+    font-size: 2rem;
+    color: #660022; /* Color del título */
+    margin-bottom: 20px;
+}
+
+.testimonial {
+    font-size: 1.1rem;
+    color: #333; /* Color del texto de los testimonios */
+    margin-bottom: 15px; /* Espacio entre los testimonios */
+}
+
+.testimonial p {
+    font-style: italic; /* Texto en cursiva para los testimonios */
+    margin: 0; /* Elimina márgenes en los párrafos de testimonios */
+}
+
+/* Sección del Mapa */
+.map-section {
+    width: 50%; /* Ocupa el 50% del ancho del contenedor principal */
+    padding: 20px; /* Espacio interno */
+}
