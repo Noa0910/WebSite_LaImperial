@@ -1,0 +1,24 @@
+/* src/styles/RegisterPage.css */
+
+.register-page {
+    margin-top: 50px; /* Espacio superior para el formulario */
+    padding: 20px;
+}
+
+.register-page h2 {
+    font-family: 'Bona Nova', serif; /* Usar la misma fuente que el resto del sitio */
+    color: #333; /* Color del texto del encabezado */
+}
+
+.register-page .form-control {
+    border-radius: 0.25rem; /* Bordes redondeados */
+}
+
+.register-page .btn-primary {
+    background-color: #D4A017; /* Color del botón primario */
+    border: none; /* Elimina el borde por defecto */
+}
+
+.register-page .btn-primary:hover {
+    background-color: #c49313; /* Color de fondo al pasar el ratón */
+}

@@ -1,0 +1,108 @@
+.menu-container {
+    width: 100%;
+    padding: 20px;
+}
+
+.menu-header {
+    display: flex;
+    flex-direction: column; /* Cambia a columna para que el título esté centrado */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.menu-logo {
+    display: none; /* Oculta el logo si no se elimina del HTML */
+}
+
+.menu-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Bona Nova', serif;
+    text-align: center; /* Asegura que el texto esté centrado */
+}
+
+.menu-sections {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples filas */
+    gap: 20px; /* Espacio entre las secciones */
+    justify-content: center; /* Centra las categorías horizontalmente */
+}
+
+.menu-section {
+    flex: 1 1 calc(50% - 20px); /* Ajusta para mostrar dos elementos por fila */
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido dentro de cada sección */
+    text-align: center; /* Centra el texto dentro de la sección */
+}
+
+.menu-section h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Muestra dos columnas en pantallas grandes */
+    gap: 15px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+}
+
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background-color: #e0e0e0;
+}
+
+.product-card .product-info {
+    padding: 10px;
+}
+
+.product-card .product-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.product-card .product-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.product-card .product-price {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-card .add-to-cart-button {
+    background-color: #D44D33;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* Muestra una columna en pantallas más pequeñas */
+    }
+}

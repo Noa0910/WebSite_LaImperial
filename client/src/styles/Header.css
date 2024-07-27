@@ -59,7 +59,7 @@
 }
 
 /* Estilo del botón del carrito */
-.cart-button {
+.cart-button, .user-button {
     background: none !important; /* Elimina el fondo del botón */
     border: none !important; /* Elimina el borde del botón */
     color: white !important; /* Color del ícono */
@@ -67,4 +67,27 @@
     font-size: 1.5rem; /* Tamaño del ícono */
     display: flex;
     align-items: center;
+}
+
+/* Estilo para el botón de alternancia del menú */
+.navbar-toggler {
+    border: none; /* Elimina el borde del botón */
+}
+
+.navbar-toggler-icon {
+    background-image: none !important; /* Elimina el fondo por defecto */
+    border: 1px solid white; /* Borde blanco para el contorno */
+    border-radius: 4px; /* Borde redondeado */
+    width: 30px; /* Ajusta el ancho */
+    height: 30px; /* Ajusta la altura */
+}
+
+.navbar-toggler-icon::before {
+    content: "\2630"; /* Unicode para el icono de hamburguesa */
+    color: white; /* Color del icono */
+    font-size: 24px; /* Tamaño del icono */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }

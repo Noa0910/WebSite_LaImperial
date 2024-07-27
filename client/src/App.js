@@ -1,3 +1,5 @@
+// src/App.js
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
@@ -8,7 +10,8 @@ import AboutUs from './components/AboutUs';
 import Contact from './components/Contact';
 import VisitVirtualPage from './components/VisitVirtualPage';
 import ShoppingCart from './components/ShoppingCart';
-import CheckoutPage from './components/checkoutPage';
+import CheckoutPage from './components/CheckoutPage';
+import RegisterPage from './components/RegisterPage'; // Importa la página de registro
 
 const App = () => {
     return (
@@ -22,6 +25,7 @@ const App = () => {
                 <Route path="/visitavirtual" element={<VisitVirtualPage />} />
                 <Route path="/cart" element={<ShoppingCart />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
+                <Route path="/register" element={<RegisterPage />} /> {/* Añade la ruta para la página de registro */}
             </Routes>
             <Footer />
         </Router>
