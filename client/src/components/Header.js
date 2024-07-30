@@ -1,5 +1,3 @@
-// src/components/Header.js
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -50,7 +48,7 @@ const Header = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link user-button" to="/register">
+                            <Link className="nav-link user-button" to="/login">
                                 <FaUser size={24} />
                             </Link>
                         </li>

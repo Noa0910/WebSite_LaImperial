@@ -1,0 +1,27 @@
+/* client/src/styles/UserProfile.css */
+
+.user-profile {
+    padding: 20px;
+}
+
+.user-profile form {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-profile label {
+    margin: 10px 0 5px;
+}
+
+.user-profile input {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.user-profile button {
+    padding: 10px;
+    background-color: #D44D33;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

@@ -4,37 +4,38 @@ import '../styles/RegisterPage.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const RegisterPage = () => {
+const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate(); // Hook para redireccionar
 
-    const handleSubmit = async (event) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
 
         try {
-            await axios.post('http://localhost:5000/api/auth/register', {
+            const response = await axios.post('http://localhost:5000/api/auth/login', {
                 username,
-                password,
-                name,
-                phone
+                password
             });
-            navigate('/login'); // Redirige a la página de inicio de sesión
+            localStorage.setItem('token', response.data.token);
+            navigate('/'); // Redirige a la página principal o a una página protegida
         } catch (error) {
-            setError('Error al registrar el usuario. Verifica los datos e intenta nuevamente.');
+            setError('Error al iniciar sesión. Verifica tu nombre de usuario y contraseña.');
         }
+    };
+
+    const handleRegisterRedirect = () => {
+        navigate('/register'); // Redirige a la página de registro
     };
 
     return (
         <div className="container register-page">
             <div className="row justify-content-center">
                 <div className="col-md-6 col-lg-4">
-                    <h2 className="text-center mb-4">Registro de Usuario</h2>
+                    <h2 className="text-center mb-4">Inicio de Sesión</h2>
                     {error && <div className="alert alert-danger">{error}</div>}
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleLogin}>
                         <div className="mb-3">
                             <label htmlFor="username" className="form-label">Nombre de Usuario:</label>
                             <input
@@ -61,32 +62,14 @@ const RegisterPage = () => {
                             />
                         </div>
 
-                        <div className="mb-3">
-                            <label htmlFor="name" className="form-label">Nombre Completo:</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                className="form-control"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="phone" className="form-label">Número de Teléfono:</label>
-                            <input
-                                type="text"
-                                id="phone"
-                                name="phone"
-                                className="form-control"
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
-                            />
-                        </div>
-
                         <div className="text-center">
-                            <button type="submit" className="btn btn-primary">Registrar</button>
+                            <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
+                        </div>
+
+                        <div className="text-center mt-3">
+                            <button type="button" className="btn btn-secondary" onClick={handleRegisterRedirect}>
+                                Crear una Cuenta
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -95,4 +78,4 @@ const RegisterPage = () => {
     );
 };
 
-export default RegisterPage;
+export default LoginPage;

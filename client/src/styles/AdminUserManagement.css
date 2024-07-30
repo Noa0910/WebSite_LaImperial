@@ -1,0 +1,28 @@
+/* client/src/styles/AdminUserManagement.css */
+
+.admin-user-management {
+    padding: 20px;
+}
+
+.admin-user-management table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-user-management table, th, td {
+    border: 1px solid #ddd;
+}
+
+.admin-user-management th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+.admin-user-management button {
+    margin: 5px;
+    padding: 8px;
+    background-color: #D44D33;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config();  // Asegúrate de que dotenv se cargue
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/mydatabase', {
+    await mongoose.connect(process.env.MONGODB_URI, {  // Usa la variable de entorno
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
