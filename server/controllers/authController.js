@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 // Registro de usuario
 exports.register = async (req, res) => {
-    const { username, password, name, phone } = req.body;
+    const { username, password, name, phone, role } = req.body; // Añadido 'role'
 
     try {
         // Verificar si el usuario ya existe
@@ -18,13 +18,13 @@ exports.register = async (req, res) => {
         // Encriptar la contraseña
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Crear nuevo usuario con rol por defecto
+        // Crear nuevo usuario con rol proporcionado o por defecto
         const newUser = new User({
             username,
             password: hashedPassword,
             name,
             phone,
-            role: 'client'  // Rol por defecto
+            role: role && ['admin', 'client'].includes(role) ? role : 'client'  // Usa el rol proporcionado si es válido, o 'client' por defecto
         });
         await newUser.save();
 

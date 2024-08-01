@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Header.css'; 
 import logo from '../images/logo.jpg';
 import { FaShoppingCart, FaUser } from 'react-icons/fa'; // Importa el ícono del carrito y del usuario
+import { AuthContext } from '../context/authContext'; // Importa el contexto de autenticación
 
 const Header = () => {
+    const { user, logout } = useContext(AuthContext);
+
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
@@ -48,9 +51,16 @@ const Header = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link user-button" to="/login">
-                                <FaUser size={24} />
-                            </Link>
+                            {user ? (
+                                <div className="nav-link user-info">
+                                    <span>Hola, {user.name}</span>
+                                    <button onClick={logout}>Cerrar sesión</button>
+                                </div>
+                            ) : (
+                                <Link className="nav-link user-button" to="/login">
+                                    <FaUser size={24} />
+                                </Link>
+                            )}
                         </li>
                     </ul>
                 </div>

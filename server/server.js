@@ -1,3 +1,4 @@
+// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -8,11 +9,9 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Verifica que las variables de entorno están cargadas correctamente
 console.log('MONGODB_URI:', process.env.MONGODB_URI);
 console.log('PORT:', process.env.PORT);
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
