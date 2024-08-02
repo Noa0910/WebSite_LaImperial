@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+// src/components/Menu.js
+import React, { useEffect, useState, useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 import '../styles/Menu.css';
 
 const Menu = () => {
     const [products, setProducts] = useState({});
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null); // Agrega un estado para el error
+    const [error, setError] = useState(null);
+    const { addToCart } = useContext(CartContext); // Usa el contexto del carrito
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -24,7 +27,7 @@ const Menu = () => {
                 setProducts(productsByCategory);
             } catch (error) {
                 console.error('Error al obtener los productos:', error);
-                setError('Error al obtener los productos.'); // Configura el error
+                setError('Error al obtener los productos.');
             } finally {
                 setLoading(false);
             }
@@ -40,7 +43,7 @@ const Menu = () => {
             {loading ? (
                 <p>Cargando productos...</p>
             ) : error ? (
-                <p>{error}</p> // Muestra el mensaje de error si hay uno
+                <p>{error}</p>
             ) : (
                 <section className="menu-sections">
                     {Object.keys(products).length === 0 ? (
@@ -53,7 +56,6 @@ const Menu = () => {
                                     {products[section].map(product => (
                                         <div className="product-card" key={product._id}>
                                             <div className="product-image-placeholder">
-                                                {/* Texto de marcador de posición para las imágenes */}
                                                 <p>Imagen no disponible</p>
                                             </div>
                                             <div className="product-info">

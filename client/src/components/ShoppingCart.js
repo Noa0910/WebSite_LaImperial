@@ -1,44 +1,42 @@
-import React from 'react';
+// src/components/ShoppingCart.js
+import React, { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 import '../styles/ShoppingCart.css';
 
 const ShoppingCart = () => {
-    // Obtener el carrito de compras desde localStorage
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const { cart, removeFromCart, decreaseQuantity, addToCart, getCartTotal } = useContext(CartContext);
 
-    // Calcular el total del carrito
-    const getTotal = () => {
-        return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
-    };
+    if (cart.length === 0) {
+        return (
+            <div className="shopping-cart-container">
+                <h1>Carrito de Compras</h1>
+                <p>El carrito está vacío</p>
+            </div>
+        );
+    }
 
     return (
         <div className="shopping-cart-container">
-            <header className="shopping-cart-header">
-                <h1>Carrito de Compras</h1>
-                <a href="/">Volver al Menú</a>
-            </header>
-            <section className="shopping-cart-items">
-                {cart.length === 0 ? (
-                    <p>No hay productos en el carrito.</p>
-                ) : (
-                    <ul>
-                        {cart.map(item => (
-                            <li key={item.id} className="shopping-cart-item">
-                                {/* Usa una imagen de marcador de posición si no tienes una imagen específica */}
-                                <img src={item.image ? `/images/${item.image}` : '/images/placeholder.png'} alt={item.title} />
-                                <div className="item-details">
-                                    <h3>{item.title}</h3>
-                                    <p>{item.description}</p>
-                                    <p>${item.price.toFixed(2)} x {item.quantity}</p>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-                <div className="cart-total">
-                    <h2>Total: ${getTotal()}</h2>
-                </div>
-                <button className="checkout-button">Realizar Pedido</button>
-            </section>
+            <h1>Carrito de Compras</h1>
+            <ul className="cart-items">
+                {cart.map(product => (
+                    <li key={product._id} className="cart-item">
+                        <h3>{product.title}</h3>
+                        <p>${product.price.toFixed(2)}</p>
+                        <div className="quantity-controls">
+                            <button onClick={() => decreaseQuantity(product._id)}>-</button>
+                            <span className="quantity">{product.quantity}</span>
+                            <button onClick={() => addToCart(product)}>+</button>
+                        </div>
+                        <button onClick={() => removeFromCart(product._id)}>
+                            Eliminar
+                        </button>
+                    </li>
+                ))}
+            </ul>
+            <div className="cart-total">
+                <h2>Total: ${getCartTotal().toFixed(2)}</h2>
+            </div>
         </div>
     );
 };

@@ -1,44 +1,83 @@
+/* src/styles/ShoppingCart.css */
+
 .shopping-cart-container {
     padding: 20px;
+    background-color: transparent; /* Fondo transparente */
+    border-radius: 8px;
+    box-shadow: none; /* Elimina la sombra del contenedor */
 }
 
-.shopping-cart-header {
+h1 {
+    color: #FFFFFF; /* Texto blanco */
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: 'Bona Nova', serif; /* Fuente personalizada */
+}
+
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart-item {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    color: #FFFFFF; /* Texto blanco */
+    font-family: 'Arial', sans-serif; /* Fuente moderna */
 }
 
-.shopping-cart-items {
-    margin-top: 20px;
+.cart-item h3 {
+    margin: 0;
+    font-size: 20px;
 }
 
-.shopping-cart-item {
+.cart-item p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.quantity-controls {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
 }
 
-.shopping-cart-item img {
-    width: 100px;
-    height: auto;
-    margin-right: 10px;
+.quantity-controls button {
+    background-color: #D44D33; /* Color de los botones */
+    color: #FFFFFF; /* Color del texto en los botones */
+    border: none;
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
 }
 
-.item-details {
-    flex-grow: 1;
+.quantity-controls button:hover {
+    background-color: #B43A29; /* Color al pasar el ratón por encima */
+}
+
+.quantity-controls .quantity {
+    font-size: 18px;
+    margin: 0 10px;
+    padding: 5px 10px;
+    background-color: #FFFFFF; /* Fondo blanco para la cantidad */
+    color: #D44D33; /* Color del texto de la cantidad */
+    border-radius: 4px;
 }
 
 .cart-total {
     margin-top: 20px;
-    font-size: 1.5em;
+    text-align: right;
 }
 
-.checkout-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #D44D33;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.cart-total h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF; /* Texto blanco para el total */
+    font-family: 'Bona Nova', serif; /* Fuente personalizada */
 }
