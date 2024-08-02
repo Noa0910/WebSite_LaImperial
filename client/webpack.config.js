@@ -25,13 +25,15 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/,
+        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[path][name].[ext]',
-              context: 'src' // Mantén la estructura de directorios
+              context: 'src', // Mantén la estructura de directorios
+              outputPath: 'assets', // Opcional: salida en la carpeta assets
+              publicPath: 'assets' // Opcional: ruta pública para acceder a los archivos
             }
           }
         ]

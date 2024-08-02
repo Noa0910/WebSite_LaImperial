@@ -18,23 +18,25 @@ const App = () => {
     const { user } = useContext(AuthContext);
 
     return (
-        <>
+        <div className="app">
             <Header />
-            <Routes>
-                <Route path="/" element={user?.role === 'admin' ? <Navigate to="/admin/users" /> : <MainPage />} />
-                <Route path="/menu" element={<Menu />} />
-                <Route path="/about" element={<AboutUs />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/visitavirtual" element={<VisitVirtualPage />} />
-                <Route path="/cart" element={<ShoppingCart />} />
-                <Route path="/checkout" element={<CheckoutPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/admin/users" element={user?.role === 'admin' ? <AdminUserManagement /> : <Navigate to="/" />} />
-                <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
+            <main>
+                <Routes>
+                    <Route path="/" element={user?.role === 'admin' ? <Navigate to="/admin/users" /> : <MainPage />} />
+                    <Route path="/menu" element={<Menu />} />
+                    <Route path="/about" element={<AboutUs />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/visitavirtual" element={<VisitVirtualPage />} />
+                    <Route path="/cart" element={<ShoppingCart />} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/admin/users" element={user?.role === 'admin' ? <AdminUserManagement /> : <Navigate to="/" />} />
+                    <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+            </main>
             <Footer />
-        </>
+        </div>
     );
 };
 

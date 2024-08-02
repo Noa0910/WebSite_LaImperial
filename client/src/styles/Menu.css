@@ -1,108 +1,176 @@
-.menu-container {
-    width: 100%;
-    padding: 20px;
+/* Asegura que el contenedor ocupe el espacio entre el header y el footer */
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
-.menu-header {
+body {
     display: flex;
-    flex-direction: column; /* Cambia a columna para que el título esté centrado */
-    align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column;
 }
 
-.menu-logo {
-    display: none; /* Oculta el logo si no se elimina del HTML */
+/* Contenedor Principal */
+.main-container {
+    flex: 1; /* Permite que el contenedor ocupe el espacio disponible entre header y footer */
+}
+
+/* Contenedor del Menú */
+.menu-container {
+    flex: 1; /* Ocupa el espacio restante entre header y footer */
+    padding: 20px;
+    background-color: rgba(248, 244, 227, 0.8); /* Fondo beige claro semi-transparente */
+    border-radius: 10px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en una columna */
+    align-items: center; /* Centra el contenido horizontalmente */
+}
+
+/* Ajuste para el Contenido Principal */
+.menu-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px; /* Espacio abajo del encabezado */
 }
 
 .menu-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    font-family: 'Bona Nova', serif;
-    text-align: center; /* Asegura que el texto esté centrado */
+    font-size: 2.5rem; /* Tamaño del título */
+    font-family: 'Bona Nova', serif; /* Fuente moderna */
+    color: #333; /* Color del título */
+    margin: 0; /* Elimina margen adicional */
+    font-weight: bold; /* Negrita */
+    text-transform: uppercase; /* Mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
 }
 
+/* Secciones del Menú */
 .menu-sections {
+    width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples filas */
-    gap: 20px; /* Espacio entre las secciones */
-    justify-content: center; /* Centra las categorías horizontalmente */
+    flex-direction: column; /* Organiza las secciones en una columna */
+    align-items: center; /* Centra el contenido horizontalmente */
 }
 
+/* Estilo para las secciones */
 .menu-section {
-    flex: 1 1 calc(50% - 20px); /* Ajusta para mostrar dos elementos por fila */
-    box-sizing: border-box;
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra el contenido dentro de cada sección */
-    text-align: center; /* Centra el texto dentro de la sección */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    max-width: 1200px; /* Opcional: limita el ancho máximo del contenedor de la sección */
+    margin-bottom: 30px; /* Espacio abajo de cada sección */
 }
 
 .menu-section h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 15px;
+    font-size: 2rem; /* Tamaño del título de la categoría */
+    font-family: 'Bona Nova', serif; /* Fuente moderna */
+    color: #333; /* Color del título de la categoría */
+    margin: 0; /* Elimina margen adicional */
+    font-weight: bold; /* Negrita */
+    text-transform: uppercase; /* Mayúsculas */
+    text-align: center; /* Centra el texto */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    border-bottom: 2px solid #D44D33; /* Línea de separación abajo del título */
+    padding-bottom: 10px; /* Espacio abajo del texto */
 }
 
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Muestra dos columnas en pantallas grandes */
-    gap: 15px;
-}
-
+/* Estilo para las tarjetas en el carrusel */
 .product-card {
-    background: white;
+    background: #ffffff; /* Fondo blanco para las tarjetas */
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
     overflow: hidden;
     text-align: center;
-    padding: 10px;
+    padding: 16px;
+    box-sizing: border-box;
+    max-width: 270px; /* Ancho máximo de las tarjetas */
+    margin: 0 10px; /* Espaciado entre tarjetas */
+    flex: 0 0 auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
 }
 
-.product-card img {
+/* Estilo para el carrusel en dispositivos móviles */
+@media (max-width: 768px) {
+    .slick-slide {
+        margin: 0 5px; /* Reduce el margen entre las tarjetas */
+    }
+
+    .product-card {
+        max-width: 200px; /* Reduce el ancho máximo de las tarjetas en pantallas pequeñas */
+    }
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* Escala ligeramente al pasar el ratón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
+}
+
+/* Estilo para el contenedor de la imagen del producto */
+.product-image {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
-    background-color: #e0e0e0;
+    height: 180px; /* Altura consistente para las imágenes */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
 }
 
-.product-card .product-info {
-    padding: 10px;
+.product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ajusta la imagen dentro del contenedor */
+    border-radius: 8px;
 }
 
-.product-card .product-title {
-    font-size: 1.2rem;
+/* Ajusta el contenedor de la información del producto */
+.product-info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Estilos para el título, descripción y precio del producto */
+.product-title {
+    font-size: 1.2rem; /* Tamaño del título del producto */
     font-weight: bold;
-    margin: 10px 0;
+    color: #333; /* Color del título */
+    margin: 8px 0;
 }
 
-.product-card .product-description {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 10px;
+.product-description {
+    font-size: 0.9rem; /* Tamaño de la descripción del producto */
+    color: #666; /* Color de la descripción */
+    margin-bottom: 8px;
 }
 
-.product-card .product-price {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 10px;
+.product-price {
+    font-size: 1.1rem; /* Tamaño del precio del producto */
+    color: #D44D33; /* Color del precio */
+    margin-bottom: 8px;
 }
 
-.product-card .add-to-cart-button {
-    background-color: #D44D33;
+.add-to-cart-button {
+    background-color: #D44D33; /* Color del botón */
     color: white;
     border: none;
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;
     font-size: 1rem;
+    transition: background-color 0.3s ease; /* Transición suave para el hover */
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-    .product-grid {
-        grid-template-columns: 1fr; /* Muestra una columna en pantallas más pequeñas */
-    }
+.add-to-cart-button:hover {
+    background-color: #C13822; /* Color del botón al pasar el ratón */
+}
+
+/* Estilos del carrusel */
+.slick-slide {
+    padding: 10px;
+}
+
+.slick-dots {
+    bottom: -30px;
+}
+
+.slick-prev, .slick-next {
+    z-index: 1;
 }

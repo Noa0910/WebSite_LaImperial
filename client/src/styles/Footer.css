@@ -1,3 +1,23 @@
+/* Asegura que el cuerpo de la página ocupe toda la altura de la ventana */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor principal que crecerá para llenar el espacio disponible */
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que la altura mínima de la página sea igual a la altura de la ventana */
+}
+
+main {
+    flex: 1;
+    /* Asegura que el contenido principal ocupe el espacio entre el header y el footer */
+}
+
 /* Estilo para el Footer */
 .footer {
     background-color: rgba(23, 20, 20, 0.497); /* Color de fondo */
@@ -69,7 +89,6 @@
 }
 
 .footer-bottom {
- 
     color: #ebe5ce; /* Beige Claro */
     padding: 10px 0;
     font-size: 0.8rem;

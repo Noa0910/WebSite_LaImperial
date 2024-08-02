@@ -28,7 +28,7 @@ const ShoppingCart = () => {
                             <span className="quantity">{product.quantity}</span>
                             <button onClick={() => addToCart(product)}>+</button>
                         </div>
-                        <button onClick={() => removeFromCart(product._id)}>
+                        <button className="remove-button" onClick={() => removeFromCart(product._id)}>
                             Eliminar
                         </button>
                     </li>
