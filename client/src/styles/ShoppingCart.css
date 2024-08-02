@@ -1,30 +1,17 @@
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Asegura que el footer esté al final de la página */
-footer {
-    margin-top: auto;
-}
-
 /* Estilo del contenedor del carrito */
 .shopping-cart-container {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
     padding: 20px;
     background-color: rgba(248, 244, 227, 0.8); /* Beige */
-    border-radius: 0; /* Elimina el redondeo */
+    border-radius: 10px; /* Redondea los bordes */
     box-shadow: none; /* Elimina la sombra */
-    margin: 0; /* Elimina el margen */
-    overflow-y: auto; /* Permite el desplazamiento vertical si el contenido es demasiado largo */
-    width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
-    height: 100%; /* Asegura que el contenedor ocupe el alto completo disponible */
+    width: 80%; /* Ocupa el 80% del ancho disponible */
+    max-height: 80vh; /* Limita la altura del contenedor */
     box-sizing: border-box; /* Incluye padding y border en el tamaño total del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    overflow-y: auto; /* Permite el desplazamiento vertical si el contenido es demasiado largo */
 }
 
 /* Estilo del título del carrito */
@@ -41,6 +28,7 @@ h1 {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    width: 100%; /* Ocupa el 100% del ancho disponible */
 }
 
 .cart-item {
@@ -56,11 +44,14 @@ h1 {
 .cart-item h3 {
     margin: 0;
     font-size: 20px;
+    flex: 1; /* Ocupa el espacio disponible */
 }
 
 .cart-item p {
     margin: 0;
     font-size: 18px;
+    flex: 1; /* Ocupa el espacio disponible */
+    text-align: right; /* Alinea el texto a la derecha */
 }
 
 .quantity-controls {
@@ -91,6 +82,7 @@ h1 {
     background-color: #FFFFFF; /* Fondo blanco para la cantidad */
     color: #D44D33; /* Color del texto de la cantidad */
     border-radius: 4px;
+    text-align: center; /* Centra el texto dentro del contenedor */
 }
 
 .remove-button {
@@ -111,7 +103,9 @@ h1 {
 /* Estilo para el total del carrito */
 .cart-total {
     margin-top: 20px;
-    text-align: right;
+    width: 100%; /* Ocupa el 100% del ancho disponible */
+    display: flex;
+    justify-content: flex-end; /* Alinea el contenido a la derecha */
 }
 
 .cart-total h2 {
@@ -119,4 +113,48 @@ h1 {
     font-weight: bold;
     color: #333; /* Texto oscuro para el total */
     font-family: 'Bona Nova', serif; /* Fuente personalizada */
+}
+
+/* Estilo para el mensaje de carrito vacío */
+.empty-cart-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #D44D33; /* Borde punteado */
+    border-radius: 10px;
+    background-color: #FFF; /* Fondo blanco para contraste */
+    margin-top: 20px;
+}
+
+.empty-cart-icon {
+    font-size: 60px;
+    color: #D44D33; /* Color del icono */
+    margin-bottom: 10px;
+}
+
+.empty-cart-message p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333; /* Texto oscuro */
+}
+
+/* Estilo para el botón de realizar pedido */
+.checkout-button {
+    background-color: #4CAF50; /* Color de fondo */
+    color: #FFFFFF; /* Color del texto */
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+.checkout-button:hover {
+    background-color: #45A049; /* Color al pasar el ratón por encima */
 }

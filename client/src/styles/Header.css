@@ -91,3 +91,19 @@
     justify-content: center;
     height: 100%;
 }
+
+.cart-button {
+    position: relative; /* Necesario para posicionar el contador */
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #D44D33; /* Color del fondo del contador */
+    color: white; /* Color del texto */
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+}

@@ -11,12 +11,10 @@ export const CartProvider = ({ children }) => {
             const productIndex = prevCart.findIndex(item => item._id === product._id);
 
             if (productIndex >= 0) {
-                // Product already in cart, update quantity
                 const newCart = [...prevCart];
                 newCart[productIndex].quantity += 1;
                 return newCart;
             } else {
-                // New product, add to cart with quantity 1
                 return [...prevCart, { ...product, quantity: 1 }];
             }
         });
@@ -39,7 +37,6 @@ export const CartProvider = ({ children }) => {
                     newCart[productIndex].quantity -= 1;
                     return newCart;
                 } else {
-                    // If quantity is 1, remove the product from the cart
                     return prevCart.filter(product => product._id !== productId);
                 }
             }
@@ -51,8 +48,12 @@ export const CartProvider = ({ children }) => {
         return cart.reduce((total, product) => total + product.price * product.quantity, 0);
     };
 
+    const getCartItemCount = () => {
+        return cart.reduce((count, product) => count + product.quantity, 0);
+    };
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, decreaseQuantity, getCartTotal }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, decreaseQuantity, getCartTotal, getCartItemCount }}>
             {children}
         </CartContext.Provider>
     );

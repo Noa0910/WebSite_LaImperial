@@ -1,3 +1,4 @@
+// src/components/Header.js
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -5,9 +6,11 @@ import '../styles/Header.css';
 import logo from '../images/logo.jpg';
 import { FaShoppingCart, FaUser } from 'react-icons/fa'; // Importa el ícono del carrito y del usuario
 import { AuthContext } from '../context/authContext'; // Importa el contexto de autenticación
+import { CartContext } from '../context/CartContext'; // Importa el contexto del carrito
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext);
+    const { getCartItemCount } = useContext(CartContext); // Usa el contexto del carrito
 
     return (
         <nav className="navbar navbar-expand-lg">
@@ -48,6 +51,9 @@ const Header = () => {
                         <li className="nav-item">
                             <Link className="nav-link cart-button" to="/cart">
                                 <FaShoppingCart size={24} />
+                                {getCartItemCount() > 0 && (
+                                    <span className="cart-count">{getCartItemCount()}</span>
+                                )}
                             </Link>
                         </li>
                         <li className="nav-item">
