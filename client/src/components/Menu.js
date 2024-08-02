@@ -44,10 +44,10 @@ const Menu = () => {
             dots: true,
             infinite: true,
             speed: 500,
-            slidesToShow: slidesToShow < 6 ? slidesToShow : 6, // Muestra hasta 6 productos
+            slidesToShow: slidesToShow < 6 ? slidesToShow : 6, // Ajusta los slidesToShow a la cantidad de productos, mínimo 3
             slidesToScroll: 1,
             centerMode: false,
-            variableWidth: false,
+            variableWidth: false, // Ajuste para mostrar tarjetas de ancho fijo
         };
     };
 
@@ -71,23 +71,7 @@ const Menu = () => {
                             return (
                                 <div className="menu-section" key={section}>
                                     <h2>{section.charAt(0).toUpperCase() + section.slice(1)}</h2>
-                                    {productCount >= 2 ? (
-                                        <Slider {...getSliderSettings(productCount)}>
-                                            {productList.slice(0, 6).map(product => (
-                                                <div className="product-card" key={product._id}>
-                                                    <div className="product-image">
-                                                        <img src={product.image} alt={product.title} />
-                                                    </div>
-                                                    <div className="product-info">
-                                                        <h3 className="product-title">{product.title}</h3>
-                                                        <p className="product-description">{product.description}</p>
-                                                        <p className="product-price">${product.price.toFixed(2)}</p>
-                                                        <button className="add-to-cart-button" onClick={() => addToCart(product)}>Añadir al carrito</button>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </Slider>
-                                    ) : (
+                                    {productCount < 3 ? (
                                         <div className="product-list">
                                             {productList.map(product => (
                                                 <div className="product-card" key={product._id}>
@@ -103,6 +87,22 @@ const Menu = () => {
                                                 </div>
                                             ))}
                                         </div>
+                                    ) : (
+                                        <Slider {...getSliderSettings(productCount)}>
+                                            {productList.slice(0, 6).map(product => (
+                                                <div className="product-card" key={product._id}>
+                                                    <div className="product-image">
+                                                        <img src={product.image} alt={product.title} />
+                                                    </div>
+                                                    <div className="product-info">
+                                                        <h3 className="product-title">{product.title}</h3>
+                                                        <p className="product-description">{product.description}</p>
+                                                        <p className="product-price">${product.price.toFixed(2)}</p>
+                                                        <button className="add-to-cart-button" onClick={() => addToCart(product)}>Añadir al carrito</button>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </Slider>
                                     )}
                                 </div>
                             );
