@@ -1,0 +1,73 @@
+/* Asegúrate de que el contenedor ocupe todo el alto disponible */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.visit-virtual-page {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: rgba(248, 244, 227, 0.445); /* Color beige */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #D44D33; /* Color principal */
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between; /* Ajusta el espaciado entre las tarjetas */
+    flex: 1; /* Permite que las secciones ocupen el espacio restante */
+}
+
+.section {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.section h2 {
+    font-size: 1.5rem;
+    color: #D44D33; /* Color principal */
+    margin-bottom: 10px;
+}
+
+.section p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sections {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section {
+        max-width: 100%;
+        margin-bottom: 20px; /* Espacio entre las tarjetas en vista móvil */
+    }
+}

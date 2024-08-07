@@ -1,119 +1,184 @@
-.about-us-container {
-    font-family: 'Georgia', serif;
-    color: #333;
-    padding: 40px 20px;
-    max-width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
-    margin: 0; /* Elimina el margen automático a los lados */
+/* Contenedor principal que se expande entre el header y el footer */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el contenedor ocupe al menos la altura de la ventana */
+    position: relative; /* Necesario para la posición absoluta de la imagen sobrepuesta */
 }
 
+/* Estilo del contenedor principal de About Us */
+.about-us-container {
+    font-family: 'Roboto', sans-serif; /* Fuente más moderna */
+    color: #333;
+    max-width: 1600px; /* Ancho máximo más amplio para mayor elegancia */
+    flex: 1; /* Permite que el contenedor se expanda para ocupar el espacio disponible */
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: rgba(248, 244, 227, 0.445); /* Color de fondo gris claro para un estilo más neutro y moderno */
+    border-radius: 12px; /* Bordes redondeados para un aspecto más suave */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra más prominente para profundidad */
+    position: relative; /* Necesario para la posición de la imagen sobrepuesta */
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Imagen sobrepuesta */
+.overlay-image {
+    position: absolute;
+    top: 10%; /* Ajusta la posición desde la parte superior */
+    right: 10%; /* Ajusta la posición desde la derecha */
+    width: 200px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    z-index: -1; /* Envía la imagen al fondo para que no interfiera con el contenido */
+    opacity: 0.3; /* Ajusta la opacidad según prefieras */
+    border-radius: 12px;
+}
+
+/* Encabezado de la sección Sobre Nosotros */
 .about-us-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px; /* Espacio ampliado para un diseño más aireado */
 }
 
 .about-us-header h1 {
-    font-size: 3rem; /* Tamaño de fuente más grande para el título */
-    color: #b04c3d; /* Color terracota suave para el encabezado */
-    font-weight: bold;
-    margin-bottom: 20px; /* Espacio debajo del título */
+    font-size: 3.5rem; /* Tamaño de fuente mayor para un impacto visual más fuerte */
+    color: #e76f51; /* Color coral para un toque moderno y vibrante */
+    font-weight: 700; /* Negrita para mayor énfasis */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Espaciado entre letras más amplio */
+    border-bottom: 3px solid #e76f51; /* Línea inferior más gruesa y destacada */
+    display: inline-block;
+    padding-bottom: 15px;
 }
 
 .about-us-header p {
-    font-size: 1.2rem;
+    font-size: 1.25rem; /* Tamaño de fuente un poco más grande para mayor legibilidad */
     color: #666;
-    line-height: 1.6;
-    max-width: 1000px; /* Ajusta el ancho máximo del párrafo para que no sea demasiado ancho */
-    margin: 0 auto; /* Centra el párrafo debajo del título */
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 900px; /* Ancho máximo mayor para un diseño más abierto */
 }
 
+/* Sección de Sobre Nosotros */
 .about-us-content {
-    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra todos los elementos hijos horizontalmente */
 }
 
+/* Sección de cada bloque dentro de About Us */
 .about-us-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
-    width: 100%; /* Asegura que cada sección ocupe el ancho completo */
+    margin-bottom: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    text-align: center; /* Centra el texto dentro de la sección */
 }
 
-.about-us-section .about-us-text,
+.about-us-section .about-us-text-container {
+    padding: 30px;
+    border: none; /* Sin borde para un diseño más limpio */
+    background-color: #fff; /* Fondo blanco para un contraste limpio */
+    border-radius: 12px; /* Bordes redondeados para suavidad */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada para profundidad */
+    max-width: 650px;
+    margin: 15px;
+    text-align: center; /* Asegura que el texto en el contenedor de texto también esté centrado */
+}
+
+.about-us-section .about-us-text-container h2 {
+    font-size: 2.5rem; /* Tamaño de fuente mayor para los subtítulos */
+    color: #e76f51; /* Mismo color coral para coherencia */
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.about-us-section .about-us-text-container p {
+    font-size: 1.2rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Sección de imagen */
 .about-us-section .about-us-image {
     flex: 1;
-    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 15px;
 }
 
 .about-us-section .about-us-image img {
     max-width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 12px; /* Bordes redondeados para un estilo uniforme */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
 }
 
-.about-us-section .about-us-text h2 {
-    font-size: 2rem; /* Tamaño de fuente más grande para los subtítulos */
-    color: #b04c3d; /* Color terracota para los títulos */
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.about-us-section .about-us-text p {
-    font-size: 1.1rem;
-    color: #444;
-    line-height: 1.8;
-}
-
+/* Alterna la disposición de texto e imagen */
 .about-us-section.reversed {
     flex-direction: row-reverse;
 }
 
+/* Sección de radio */
 .about-us-radio {
-    background-color: #b04c3d; /* Color terracota oscuro */
+    background-color: #2a9d8f; /* Color verde menta para un estilo moderno */
     color: #fff;
-    padding: 30px;
-    border-radius: 12px;
+    padding: 40px;
+    border-radius: 15px; /* Bordes más redondeados para un aspecto más suave */
     text-align: center;
-    margin-top: 40px;
+    margin-top: 50px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
 }
 
 .radio-content {
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
+/* Botón de la emisora */
 .radio-link {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 14px 28px;
     background-color: #fff;
-    color: #b04c3d;
+    color: #2a9d8f;
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    margin-top: 15px; /* Espacio adicional para separar del contenido */
 }
 
 .radio-link:hover {
-    background-color: #f5f5f5;
-    color: #b04c3d;
+    background-color: #eafaf4; /* Color de fondo suave para el hover */
+    color: #2a9d8f;
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .radio-link:active {
     transform: translateY(1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-
+/* Estilos responsivos */
 @media (max-width: 768px) {
     .about-us-section {
         flex-direction: column;
         text-align: center;
     }
 
-    .about-us-section .about-us-text,
+    .about-us-section .about-us-text-container,
     .about-us-section .about-us-image {
         padding: 20px 0;
+        height: auto;
+        max-width: 100%;
     }
 }

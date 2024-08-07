@@ -4,10 +4,11 @@
     flex-direction: column;
     align-items: center; /* Centra el contenido horizontalmente */
     padding: 20px;
-    background-color: rgba(248, 244, 227, 0.8); /* Beige */
+    background-color: rgba(248, 244, 227, 0.445); /* Beige */
     border-radius: 10px; /* Redondea los bordes */
     box-shadow: none; /* Elimina la sombra */
-    width: 80%; /* Ocupa el 80% del ancho disponible */
+    width: 100%; /* Ocupa el 100% del ancho disponible */
+    max-width: 1200px; /* Máximo ancho del contenedor */
     max-height: 80vh; /* Limita la altura del contenedor */
     box-sizing: border-box; /* Incluye padding y border en el tamaño total del contenedor */
     margin: 0 auto; /* Centra el contenedor horizontalmente */
@@ -41,6 +42,7 @@ h1 {
     font-family: 'Arial', sans-serif; /* Fuente moderna */
 }
 
+/* Alineación del nombre del producto y del precio */
 .cart-item h3 {
     margin: 0;
     font-size: 20px;
@@ -54,6 +56,7 @@ h1 {
     text-align: right; /* Alinea el texto a la derecha */
 }
 
+/* Alineación del botón y de la cantidad */
 .quantity-controls {
     display: flex;
     align-items: center;
@@ -148,13 +151,25 @@ h1 {
     padding: 10px 20px;
     margin-top: 20px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px; /* Bordes más redondeados */
     font-size: 18px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease; /* Transición suave para todos los cambios */
     text-align: center;
     width: 100%; /* Ocupa todo el ancho disponible */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para un efecto de profundidad */
+    transform: translateY(0); /* Inicialmente sin desplazamiento vertical */
 }
 
+/* Efecto al pasar el ratón por encima */
 .checkout-button:hover {
     background-color: #45A049; /* Color al pasar el ratón por encima */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada para mayor profundidad */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+/* Efecto al hacer clic */
+.checkout-button:active {
+    background-color: #388E3C; /* Color más oscuro al hacer clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más sutil al hacer clic */
+    transform: translateY(1px); /* Efecto de hundimiento */
 }

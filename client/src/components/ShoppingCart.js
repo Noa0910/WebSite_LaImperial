@@ -26,8 +26,12 @@ const ShoppingCart = () => {
             <ul className="cart-items">
                 {cart.map(product => (
                     <li key={product._id} className="cart-item">
-                        <h3>{product.title}</h3>
+                        <h3>{product.title || 'Menú del Día'}</h3>
                         <p>${product.price.toFixed(2)}</p>
+                        {/* Muestra la descripción si existe, o una predeterminada si no */}
+                        <p>
+                            {product.description ? product.description : 'Deliciosa comida colombiana'}
+                        </p>
                         <div className="quantity-controls">
                             <button onClick={() => decreaseQuantity(product._id)}>-</button>
                             <span className="quantity">{product.quantity}</span>

@@ -1,6 +1,7 @@
 /* Barra de Navegación */
 .navbar {
-    background-color: rgba(23, 20, 20, 0.497) !important; /* Fondo semitransparente oscuro */
+    /*background-color: rgba(23, 20, 20, 0.253) !important; /* Fondo semitransparente oscuro */
+    background-color: rgba(212, 168, 74, 0.596);
     display: flex;
     align-items: center;
     justify-content: space-between; /* Espacio entre el logo/texto y el menú */

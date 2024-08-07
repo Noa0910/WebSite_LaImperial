@@ -1,113 +1,106 @@
-/* Página Principal */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Georgia&display=swap');
+
 .main-page {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
-    flex-direction: column; /* Mantén la dirección de columna */
-    align-items: center; /* Centra horizontalmente el contenido */
-    width: 100%; /* Asegura que el contenedor principal ocupe todo el ancho */
-    background-color: rgba(248, 244, 227, 0.8); /* Fondo beige claro semi-transparente */
-    box-sizing: border-box; /* Incluye padding en el ancho total */
-    min-height: 100vh; /* Asegura que el contenedor ocupe al menos el alto de la ventana */
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
 }
 
-/* Contenido Central */
-.central-content {
-    border-radius: 10px;
-    text-align: center; /* Centra el texto */
-    width: 100%; /* Asegura que ocupe todo el ancho del contenedor principal */
-    max-width: 1200px; /* Opcional: limita el ancho máximo del contenido */
-    box-sizing: border-box; /* Incluye padding en el ancho total */
-    margin: 20px 0; /* Espacio arriba y abajo */
-    padding: 20px; /* Espacio interno */
-}
-
-.central-content h1 {
-    font-size: 2.5rem;
-    color: #333; /* Color de texto */
-    margin-bottom: 20px;
-}
-
-.central-content p {
-    font-size: 1.2rem;
-    color: #660022; /* Azul Oscuro */
-    margin-bottom: 20px;
-}
-
-/* Botón del Menú */
-.menu-button {
-    background-color: #660022; /* Color del botón */
-    color: #ebe5ce; /* Beige Claro */
-    padding: 10px 20px;
-    text-decoration: none; /* Elimina el subrayado */
-    border-radius: 5px;
-    font-weight: bold;
-    font-family: 'Bona Nova', serif; /* Usa la fuente Bona Nova */
-}
-
-.menu-button:hover {
-    background-color: #D4A017; /* Amarillo Ocre para el hover */
-}
-
-/* Sección del Carrusel */
-.placeholder-section {
-    border-radius: 10px;
+.content {
     text-align: center;
-    width: 100%; /* Asegura que ocupe el ancho completo */
-    box-sizing: border-box; /* Incluye padding en el ancho total */
-    padding: 20px; /* Espacio interno */
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    color: #fff;
+    max-width: 1000px;
+    margin-bottom: 40px;
 }
 
-/* Estilo para el Carrusel */
-.carousel-inner img {
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    height: 400px; /* Ajusta el alto a 400px, cambia este valor según lo necesites */
-    object-fit: cover; /* Asegura que las imágenes cubran el contenedor sin distorsión */
-    border-radius: 10px; /* Bordes redondeados para las imágenes */
+.title {
+    font-family: 'Lobster', cursive;
+    font-size: 90px;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+    color: #FFD700; /* Color dorado */
+    -webkit-text-stroke: 2px #8B4513; /* Contorno marrón */
+    letter-spacing: 2px;
+    transform: rotate(-5deg);
+    transition: transform 0.3s ease;
 }
 
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para los controles */
-    border-radius: 50%; /* Redondea los controles */
+.title:hover {
+    transform: rotate(0deg) scale(1.05);
 }
 
-/* Sección Principal de Contenidos (Testimonios y Mapa) */
-.main-content {
-    display: flex; /* Usa flexbox para alinear los elementos en columnas */
-    width: 100%; /* Asegura que ocupe todo el ancho del contenedor principal */
-    max-width: 1200px; /* Opcional: limita el ancho máximo del contenedor */
-    margin: 20px auto; /* Centra horizontalmente y agrega espacio arriba y abajo */
-    box-sizing: border-box; /* Incluye padding en el ancho total */
+.description {
+    font-family: 'Georgia', serif;
+    font-size: 30px;
+    line-height: 1.8;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    padding: 10px;
+    border-radius: 10px;
 }
 
-/* Sección de Testimonios */
-.testimonials-section {
-    width: 50%; /* Ocupa el 50% del ancho del contenedor principal */
-    padding: 20px; /* Espacio interno */
-    /* Quitar el fondo blanco */
-    background-color: transparent; /* Fondo transparente */
-    border-radius: 10px; /* Bordes redondeados */
-    text-align: center; /* Centra el texto */
+.button-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    max-width: 800px;
 }
 
-.testimonials-section h2 {
-    font-size: 2rem;
-    color: #660022; /* Color del título */
-    margin-bottom: 20px;
+.button {
+    display: inline-flex;
+    align-items: center;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #D44D33;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
-.testimonial {
-    font-size: 1.1rem;
-    color: #333; /* Color del texto de los testimonios */
-    margin-bottom: 15px; /* Espacio entre los testimonios */
+.button i {
+    font-size: 24px;
 }
 
-.testimonial p {
-    font-style: italic; /* Texto en cursiva para los testimonios */
-    margin: 0; /* Elimina márgenes en los párrafos de testimonios */
+.button:hover {
+    background-color: #B43829;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Sección del Mapa */
-.map-section {
-    width: 50%; /* Ocupa el 50% del ancho del contenedor principal */
-    padding: 20px; /* Espacio interno */
+@media (max-width: 768px) {
+    .title {
+        font-size: 48px;
+    }
+
+    .description {
+        font-size: 18px;
+    }
+
+    .button-container {
+        gap: 15px;
+    }
+
+    .button {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .button i {
+        font-size: 20px;
+    }
 }

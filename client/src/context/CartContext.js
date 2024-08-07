@@ -1,4 +1,3 @@
-// src/context/CartContext.js
 import React, { createContext, useState } from 'react';
 
 export const CartContext = createContext();
@@ -7,6 +6,7 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
     const addToCart = (product) => {
+        console.log('Añadiendo al carrito:', product);  // Para depuración
         setCart((prevCart) => {
             const productIndex = prevCart.findIndex(item => item._id === product._id);
 
@@ -15,6 +15,7 @@ export const CartProvider = ({ children }) => {
                 newCart[productIndex].quantity += 1;
                 return newCart;
             } else {
+                // Asegúrate de que el objeto 'product' tenga todas las propiedades necesarias
                 return [...prevCart, { ...product, quantity: 1 }];
             }
         });
