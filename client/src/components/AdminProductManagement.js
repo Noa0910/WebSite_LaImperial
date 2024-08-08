@@ -1,4 +1,3 @@
-// client/src/components/AdminProductManagement.js
 import React, { useState, useEffect } from 'react';
 import { getProducts, addProduct, updateProduct, deleteProduct } from '../services/productService';
 import '../styles/AdminProductManagement.css';
@@ -99,11 +98,21 @@ const AdminProductManagement = () => {
                             <td>{product.category}</td>
                             <td><img src={product.image} alt={product.name} style={{ width: '100px' }} /></td>
                             <td>
-                                <button onClick={() => {
-                                    setSelectedProduct(product);
-                                    setIsEditing(true);
-                                }}>Edit</button>
-                                <button onClick={() => handleDelete(product._id)}>Delete</button>
+                                <button
+                                    className="edit-button"
+                                    onClick={() => {
+                                        setSelectedProduct(product);
+                                        setIsEditing(true);
+                                    }}
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    className="delete-button"
+                                    onClick={() => handleDelete(product._id)}
+                                >
+                                    Delete
+                                </button>
                             </td>
                         </tr>
                     ))}
@@ -176,7 +185,9 @@ const AdminProductManagement = () => {
                         required
                     />
                 </div>
-                <button type="submit">{isEditing ? 'Update Product' : 'Add Product'}</button>
+                <button type="submit" className="submit-button">
+                    {isEditing ? 'Update Product' : 'Add Product'}
+                </button>
             </form>
         </div>
     );
