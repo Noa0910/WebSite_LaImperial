@@ -9,11 +9,17 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
+    const [acceptPolicy, setAcceptPolicy] = useState(false); // Estado para manejar el checkbox
     const [error, setError] = useState('');
     const navigate = useNavigate(); // Hook para redireccionar
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (!acceptPolicy) {
+            setError('Debes aceptar la política de tratamiento de datos.');
+            return;
+        }
 
         try {
             await axios.post('http://localhost:5000/api/auth/register', {
@@ -83,6 +89,20 @@ const RegisterPage = () => {
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
                             />
+                        </div>
+
+                        <div className="mb-3 form-check">
+                            <input
+                                type="checkbox"
+                                id="acceptPolicy"
+                                name="acceptPolicy"
+                                className="form-check-input"
+                                checked={acceptPolicy}
+                                onChange={(e) => setAcceptPolicy(e.target.checked)}
+                            />
+                            <label htmlFor="acceptPolicy" className="form-check-label">
+                                Acepto la <a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">política de tratamiento de datos</a>.
+                            </label>
                         </div>
 
                         <div className="text-center">

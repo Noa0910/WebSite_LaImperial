@@ -1,3 +1,5 @@
+// client/src/components/Header.js
+
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,8 +15,12 @@ const Header = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        logout();
-        navigate('/login');
+        try {
+            logout();
+            navigate('/login');
+        } catch (error) {
+            console.error('Error during logout:', error);
+        }
     };
 
     return (

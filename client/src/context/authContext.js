@@ -1,3 +1,5 @@
+// client/src/context/authContext.js
+
 import React, { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login as loginService, logout as logoutService, getUserProfile } from '../services/authService';

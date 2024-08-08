@@ -1,68 +1,53 @@
-// routes/productRoutes.js
+// server/routes/productRoutes.js
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product');
-const cloudinary = require('cloudinary').v2; // Asegúrate de que Cloudinary esté correctamente configurado
 
-// Ruta para obtener todos los productos
+// Ruta para obtener todos los productos con paginación y filtrado
 router.get('/', async (req, res) => {
+    const { page = 1, limit = 10, search = '' } = req.query;
+    const query = search ? { name: new RegExp(search, 'i') } : {};
+
     try {
-        const products = await Product.find();
-        res.json(products);
+        const products = await Product.find(query)
+            .skip((page - 1) * limit)
+            .limit(parseInt(limit));
+        const totalProducts = await Product.countDocuments(query);
+        const totalPages = Math.ceil(totalProducts / limit);
+        res.json({ products, totalPages });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: 'Failed to fetch products' });
     }
 });
 
-// Ruta para obtener un producto por ID
-router.get('/:id', async (req, res) => {
-    try {
-        const product = await Product.findById(req.params.id);
-        if (product) {
-            res.json(product);
-        } else {
-            res.status(404).json({ message: 'Producto no encontrado' });
-        }
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
-
-// Ruta para crear un nuevo producto
+// Ruta para agregar un nuevo producto
 router.post('/', async (req, res) => {
-    const { title, description, price, image, category } = req.body;
-
-    if (!title || !description || !price || !category) {
-        return res.status(400).json({ message: 'Todos los campos son obligatorios' });
-    }
-
-    // Verifica si se ha enviado una imagen
-    let imageUrl = '';
-    if (image) {
-        try {
-            // Subir la imagen a Cloudinary
-            const result = await cloudinary.uploader.upload(image, {
-                folder: 'products', // Opcional: carpeta en Cloudinary para organizar las imágenes
-            });
-            imageUrl = result.secure_url; // URL segura de la imagen en Cloudinary
-        } catch (error) {
-            return res.status(500).json({ message: 'Error al subir la imagen a Cloudinary' });
-        }
-    }
-
     try {
-        const newProduct = new Product({
-            title,
-            description,
-            price,
-            image: imageUrl, // Usar la URL de la imagen subida
-            category
-        });
-
-        const savedProduct = await newProduct.save();
-        res.status(201).json(savedProduct);
+        const newProduct = new Product(req.body);
+        await newProduct.save();
+        res.status(201).json(newProduct);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: 'Failed to add product' });
+    }
+});
+
+// Ruta para actualizar un producto
+router.put('/:id', async (req, res) => {
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        res.json(updatedProduct);
+    } catch (error) {
+        res.status(400).json({ message: 'Failed to update product' });
+    }
+});
+
+// Ruta para eliminar un producto
+router.delete('/:id', async (req, res) => {
+    try {
+        await Product.findByIdAndDelete(req.params.id);
+        res.status(204).end();
+    } catch (error) {
+        res.status(400).json({ message: 'Failed to delete product' });
     }
 });
 

@@ -4,8 +4,12 @@ const API_URL = 'http://localhost:5000/api';
 
 // Función para decodificar el token
 function decodeToken(token) {
-    const payload = token.split('.')[1];
-    return JSON.parse(atob(payload));
+    try {
+        const payload = token.split('.')[1];
+        return JSON.parse(atob(payload));
+    } catch (error) {
+        throw new Error('Invalid token');
+    }
 }
 
 // Función para realizar solicitudes API con manejo de token
@@ -20,8 +24,7 @@ async function apiRequest(url, options = {}) {
     const response = await fetch(url, { ...options, headers });
     
     if (response.status === 401) {
-        // Token inválido o expirado
-        logout();
+        logout(); // Verifica que logout esté accesible aquí
         throw new Error('Session expired. Please login again.');
     }
     
