@@ -15,9 +15,12 @@ exports.verifyToken = (req, res, next) => {
 exports.verifyAdmin = async (req, res, next) => {
     try {
         const user = await User.findById(req.userId);
+        if (!user) return res.status(404).json({ message: 'User not found' });
+        console.log('User role:', user.role); // Para depuración
         if (user.role !== 'admin') return res.status(403).json({ message: 'Access forbidden' });
         next();
     } catch (error) {
+        console.error('Error verifying admin:', error); // Para depuración
         res.status(500).json({ message: 'Error verifying admin' });
     }
 };

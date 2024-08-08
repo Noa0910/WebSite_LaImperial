@@ -1,16 +1,21 @@
-// src/components/Header.js
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Header.css'; 
 import logo from '../images/logo.jpg';
-import { FaShoppingCart, FaUser } from 'react-icons/fa'; // Importa el ícono del carrito y del usuario
-import { AuthContext } from '../context/authContext'; // Importa el contexto de autenticación
-import { CartContext } from '../context/CartContext'; // Importa el contexto del carrito
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import { AuthContext } from '../context/authContext';
+import { CartContext } from '../context/CartContext';
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext);
-    const { getCartItemCount } = useContext(CartContext); // Usa el contexto del carrito
+    const { getCartItemCount } = useContext(CartContext);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
 
     return (
         <nav className="navbar navbar-expand-lg">
@@ -59,8 +64,14 @@ const Header = () => {
                         <li className="nav-item">
                             {user ? (
                                 <div className="nav-link user-info">
+                                    <FaUser 
+                                        size={24} 
+                                        className={`user-icon ${user ? 'user-icon-logged' : ''}`}
+                                    />
                                     <span>Hola, {user.name}</span>
-                                    <button onClick={logout}>Cerrar sesión</button>
+                                    <div className="dropdown-content">
+                                        <button onClick={handleLogout}>Cerrar sesión</button>
+                                    </div>
                                 </div>
                             ) : (
                                 <Link className="nav-link user-button" to="/login">
@@ -68,6 +79,13 @@ const Header = () => {
                                 </Link>
                             )}
                         </li>
+                        {user && user.role === 'admin' && (
+                            <li className="nav-item">
+                                <Link className="nav-link admin-button" to="/admin">
+                                    Panel de Admin
+                                </Link>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>

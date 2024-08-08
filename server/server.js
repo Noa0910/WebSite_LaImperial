@@ -2,7 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const apiRoutes = require('./routes/api'); // Asegúrate de que esta ruta sea correcta
+const apiRoutes = require('./routes/api');
+const authRoutes = require('./routes/authRoutes'); // Añade esta línea
 const cloudinary = require('cloudinary').v2;
 require('dotenv').config();
 
@@ -17,10 +18,11 @@ cloudinary.config({
 });
 
 app.use(cors());
-app.use(bodyParser.json()); // Middleware para procesar cuerpos JSON
+app.use(bodyParser.json());
 
 // Usar las rutas de API
 app.use('/api', apiRoutes);
+app.use('/api/auth', authRoutes); // Añade esta línea
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Conectado a la base de datos'))

@@ -1,0 +1,26 @@
+.admin-order-management {
+    padding: 20px;
+}
+
+.admin-order-management table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-order-management table, th, td {
+    border: 1px solid #ddd;
+}
+
+.admin-order-management th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+.admin-order-management button {
+    margin: 5px;
+    padding: 8px;
+    background-color: #D44D33;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

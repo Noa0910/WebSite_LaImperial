@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login, logout as logoutService, getUserProfile } from '../services/authService';
+import { login as loginService, logout as logoutService, getUserProfile } from '../services/authService';
 
 export const AuthContext = createContext();
 
@@ -10,12 +10,12 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchUser = async () => {
+        const fetchUser = () => {
             try {
-                const response = await getUserProfile();
-                console.log('Fetched user profile:', response); // Verifica la estructura de `response`
-                setUser(response); // Ajusta según la estructura de la respuesta del backend
+                const userProfile = getUserProfile();
+                setUser(userProfile);
             } catch (error) {
+                console.error('Error fetching user profile:', error);
                 setUser(null);
             } finally {
                 setLoading(false);
@@ -26,16 +26,13 @@ export const AuthProvider = ({ children }) => {
 
     const handleLogin = async (username, password) => {
         try {
-            const response = await login(username, password);
+            const response = await loginService(username, password);
             console.log('Login response:', response);
-            setUser(response.user); // Asegúrate de que `response.user` tenga el rol
-            if (response.user.role === 'admin') {
-                navigate('/admin/users');
-            } else {
-                navigate('/');
-            }
+            setUser(response.user);
+            return response.user; // Retorna el usuario para que LoginPage pueda manejar la redirección
         } catch (error) {
             console.error('Error en el inicio de sesión', error);
+            throw error;
         }
     };
 
@@ -46,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     if (loading) {
-        return <div>Loading...</div>; // Puedes usar un spinner de carga aquí
+        return <div>Loading...</div>;
     }
 
     return (

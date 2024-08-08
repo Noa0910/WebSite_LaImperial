@@ -1,32 +1,35 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/RegisterPage.css'; 
-import axios from 'axios';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/RegisterPage.css';
+import { AuthContext } from '../context/authContext';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const navigate = useNavigate(); // Hook para redireccionar
+    const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     const handleLogin = async (event) => {
         event.preventDefault();
-
+        setError('');
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', {
-                username,
-                password
-            });
-            localStorage.setItem('token', response.data.token);
-            navigate('/'); // Redirige a la página principal o a una página protegida
+            const user = await login(username, password);
+            if (user.role === 'admin') {
+                navigate('/admin/users');
+            } else if (user.role === 'client') {
+                navigate('/');
+            } else {
+                console.error('Unknown user role:', user.role);
+            }
         } catch (error) {
             setError('Error al iniciar sesión. Verifica tu nombre de usuario y contraseña.');
         }
     };
 
     const handleRegisterRedirect = () => {
-        navigate('/register'); // Redirige a la página de registro
+        navigate('/register');
     };
 
     return (
@@ -48,7 +51,6 @@ const LoginPage = () => {
                                 required
                             />
                         </div>
-
                         <div className="mb-3">
                             <label htmlFor="password" className="form-label">Contraseña:</label>
                             <input
@@ -61,11 +63,9 @@ const LoginPage = () => {
                                 required
                             />
                         </div>
-
                         <div className="text-center">
                             <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
                         </div>
-
                         <div className="text-center mt-3">
                             <button type="button" className="btn btn-secondary" onClick={handleRegisterRedirect}>
                                 Crear una Cuenta

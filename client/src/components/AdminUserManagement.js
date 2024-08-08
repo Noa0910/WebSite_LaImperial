@@ -1,4 +1,3 @@
-// client/src/components/AdminUserManagement.js
 import React, { useState, useEffect } from 'react';
 import { getUsers, deleteUser, updateUser } from '../services/authService';
 import '../styles/AdminUserManagement.css';
@@ -12,6 +11,7 @@ const AdminUserManagement = () => {
         async function fetchUsers() {
             try {
                 const usersData = await getUsers();
+                console.log('Fetched users:', usersData); // Verifica los datos recibidos
                 setUsers(usersData);
             } catch (error) {
                 console.error("Failed to fetch users", error);

@@ -1,92 +1,116 @@
 /* Barra de Navegación */
 .navbar {
-    /*background-color: rgba(23, 20, 20, 0.253) !important; /* Fondo semitransparente oscuro */
     background-color: rgba(212, 168, 74, 0.596);
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Espacio entre el logo/texto y el menú */
-    padding: 0 15px; /* Ajusta el padding si es necesario */
+    justify-content: space-between;
+    padding: 0 15px;
 }
 
+/* Contenedor del logo y el nombre del restaurante */
 .navbar-brand-container {
     display: flex;
     align-items: center;
 }
 
 .logo-img {
-    height: 60px; /* Ajusta el tamaño del logo */
+    height: 60px;
     border-radius: 50%;
-    margin-right: 15px; /* Espacio entre el logo y el texto */
+    margin-right: 15px;
 }
 
 .restaurant-name {
-    color: white !important; /* Color del texto del restaurante */
-    font-size: 1.5rem; /* Tamaño de la fuente */
-    font-weight: bold; /* Negrita */
-    font-family: 'Bona Nova', serif; /* Usa la fuente Bona Nova */
+    color: white !important;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Bona Nova', serif;
 }
 
 /* Estilo del menú de navegación */
 .navbar-nav {
     display: flex;
-    align-items: center; /* Alinea verticalmente los ítems */
-    justify-content: flex-end; /* Alinea el menú a la derecha */
+    align-items: center;
+    justify-content: flex-end;
     flex-grow: 1;
 }
 
 .navbar-nav .nav-item {
-    margin: 0 15px; /* Ajusta el margen entre los elementos del menú */
-    position: relative; /* Necesario para posicionar el separador */
+    margin: 0 15px;
+    position: relative;
 }
 
 .navbar-nav .nav-link {
-    color: white !important; /* Color de los enlaces del menú */
+    color: white !important;
     text-transform: uppercase;
-    font-weight: bold; /* Aplica negrita */
-    font-family: 'Bona Nova', serif; /* Usa la fuente Bona Nova */
-    font-size: 0.9rem; /* Ajusta el tamaño de la fuente */
+    font-weight: bold;
+    font-family: 'Bona Nova', serif;
+    font-size: 0.9rem;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #D4A017 !important; /* Amarillo Ocre */
+    color: #D4A017 !important;
 }
 
 /* Separador vertical */
 .navbar-nav .separator {
-    width: 2px; /* Ancho del separador */
-    background-color: white !important; /* Color del separador */
-    height: 24px; /* Altura del separador */
-    margin: 0 15px; /* Espacio alrededor del separador */
+    width: 2px;
+    background-color: white !important;
+    height: 24px;
+    margin: 0 15px;
 }
 
 /* Estilo del botón del carrito */
 .cart-button, .user-button {
-    background: none !important; /* Elimina el fondo del botón */
-    border: none !important; /* Elimina el borde del botón */
-    color: white !important; /* Color del ícono */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    font-size: 1.5rem; /* Tamaño del ícono */
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    cursor: pointer;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
 }
 
-/* Estilo para el botón de alternancia del menú */
+/* Estilo del ícono del usuario cuando está autenticado */
+.user-icon-logged {
+    color: #00ff00;
+}
+
+/* Información del usuario */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Botón de cerrar sesión */
+.user-info button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px;
+}
+
+/* Estilo del botón de alternancia del menú */
 .navbar-toggler {
-    border: none; /* Elimina el borde del botón */
+    border: none;
 }
 
 .navbar-toggler-icon {
-    background-image: none !important; /* Elimina el fondo por defecto */
-    border: 1px solid white; /* Borde blanco para el contorno */
-    border-radius: 4px; /* Borde redondeado */
-    width: 30px; /* Ajusta el ancho */
-    height: 30px; /* Ajusta la altura */
+    background-image: none !important;
+    border: 1px solid white;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
 }
 
 .navbar-toggler-icon::before {
-    content: "\2630"; /* Unicode para el icono de hamburguesa */
-    color: white; /* Color del icono */
-    font-size: 24px; /* Tamaño del icono */
+    content: "\2630";
+    color: white;
+    font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,17 +118,45 @@
 }
 
 .cart-button {
-    position: relative; /* Necesario para posicionar el contador */
+    position: relative;
 }
 
 .cart-count {
     position: absolute;
     top: -10px;
     right: -10px;
-    background-color: #D44D33; /* Color del fondo del contador */
-    color: white; /* Color del texto */
+    background-color: #D44D33;
+    color: white;
     border-radius: 50%;
     padding: 2px 6px;
     font-size: 12px;
     font-weight: bold;
+}
+
+.user-info .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+    top: 100%;
+}
+
+.user-info:hover .dropdown-content {
+    display: block;
+}
+
+.user-info .dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.user-info .dropdown-content button:hover {
+    background-color: #f1f1f1;
 }
