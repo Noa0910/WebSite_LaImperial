@@ -1,48 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { getOrders, updateOrderStatus, deleteOrder } from '../services/orderService';
+import React from 'react';
 import '../styles/AdminOrderManagement.css';
 
 const AdminOrderManagement = () => {
-    const [orders, setOrders] = useState([]);
-    const [selectedOrder, setSelectedOrder] = useState(null);
-    const [status, setStatus] = useState('');
+    // Datos de ejemplo
+    const orders = [
+        {
+            _id: '1',
+            user: { name: 'John Doe' },
+            items: [{ name: 'Bread' }, { name: 'Butter' }],
+            total: 5.00,
+            status: 'pending',
+        },
+        {
+            _id: '2',
+            user: { name: 'Jane Smith' },
+            items: [{ name: 'Coffee' }, { name: 'Donut' }],
+            total: 4.50,
+            status: 'completed',
+        },
+        {
+            _id: '3',
+            user: { name: 'Alice Johnson' },
+            items: [{ name: 'Bagel' }],
+            total: 2.75,
+            status: 'canceled',
+        },
+    ];
 
-    useEffect(() => {
-        async function fetchOrders() {
-            try {
-                const ordersData = await getOrders();
-                setOrders(ordersData);
-            } catch (error) {
-                console.error("Failed to fetch orders", error);
-            }
-        }
-        fetchOrders();
-    }, []);
-
-    const handleStatusChange = (e) => {
-        setStatus(e.target.value);
+    // Funciones de ejemplo para los botones
+    const handleEdit = (order) => {
+        alert(`Edit order ${order._id}`);
     };
 
-    const handleUpdateStatus = async (orderId) => {
-        try {
-            await updateOrderStatus(orderId, status);
-            const updatedOrders = await getOrders();
-            setOrders(updatedOrders);
-            setSelectedOrder(null);
-            setStatus('');
-        } catch (error) {
-            console.error("Failed to update order status", error);
-        }
-    };
-
-    const handleDelete = async (orderId) => {
-        try {
-            await deleteOrder(orderId);
-            const updatedOrders = await getOrders();
-            setOrders(updatedOrders);
-        } catch (error) {
-            console.error("Failed to delete order", error);
-        }
+    const handleDelete = (orderId) => {
+        alert(`Delete order ${orderId}`);
     };
 
     return (
@@ -65,27 +56,10 @@ const AdminOrderManagement = () => {
                             <td>{order._id}</td>
                             <td>{order.user.name}</td>
                             <td>{order.items.map(item => item.name).join(', ')}</td>
-                            <td>${order.total}</td>
+                            <td>${order.total.toFixed(2)}</td>
+                            <td>{order.status}</td>
                             <td>
-                                {selectedOrder && selectedOrder._id === order._id ? (
-                                    <>
-                                        <select value={status} onChange={handleStatusChange}>
-                                            <option value="">Select status</option>
-                                            <option value="pending">Pending</option>
-                                            <option value="completed">Completed</option>
-                                            <option value="canceled">Canceled</option>
-                                        </select>
-                                        <button onClick={() => handleUpdateStatus(order._id)}>Update Status</button>
-                                    </>
-                                ) : (
-                                    order.status
-                                )}
-                            </td>
-                            <td>
-                                <button onClick={() => {
-                                    setSelectedOrder(order);
-                                    setStatus(order.status);
-                                }}>Edit</button>
+                                <button onClick={() => handleEdit(order)}>Edit</button>
                                 <button onClick={() => handleDelete(order._id)}>Delete</button>
                             </td>
                         </tr>

@@ -1,3 +1,5 @@
+// routes/days.js
+
 const express = require('express');
 const router = express.Router();
 const Day = require('../models/Day');
@@ -9,7 +11,6 @@ router.post('/', async (req, res) => {
             day: req.body.day,
             firstMenu: req.body.firstMenu,
             secondMenu: req.body.secondMenu,
-            description: req.body.description,
             price: req.body.price
         });
 
@@ -41,7 +42,7 @@ router.patch('/:id', async (req, res) => {
         
         if (req.body.firstMenu != null) day.firstMenu = req.body.firstMenu;
         if (req.body.secondMenu != null) day.secondMenu = req.body.secondMenu;
-        if (req.body.description != null) day.description = req.body.description;
+        if (req.body.day != null) day.day = req.body.day;
         if (req.body.price != null) day.price = req.body.price;
         
         const updatedDay = await day.save();

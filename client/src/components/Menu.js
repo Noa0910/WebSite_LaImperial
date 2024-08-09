@@ -20,7 +20,8 @@ const Menu = () => {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                const productsByCategory = data.reduce((acc, product) => {
+                console.log('Products fetched:', data); // Debugging line
+                const productsByCategory = data.products.reduce((acc, product) => {
                     if (!acc[product.category]) {
                         acc[product.category] = [];
                     }
@@ -46,6 +47,7 @@ const Menu = () => {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
+                console.log('Day menu fetched:', data); // Debugging line
                 const menuByDay = data.reduce((acc, item) => {
                     acc[item.day] = item;
                     return acc;
@@ -97,10 +99,10 @@ const Menu = () => {
     const daysOfWeek = [
         { day: 'Lunes', menu: dayMenu['Lunes'] },
         { day: 'Martes', menu: dayMenu['Martes'] },
-        { day: 'Miercoles', menu: dayMenu['Miercoles'] },
+        { day: 'Miércoles', menu: dayMenu['Miercoles'] },
         { day: 'Jueves', menu: dayMenu['Jueves'] },
         { day: 'Viernes', menu: dayMenu['Viernes'] },
-        { day: 'Sabado', menu: dayMenu['Sabado'] },
+        { day: 'Sábado', menu: dayMenu['Sabado'] },
         { day: 'Domingo', menu: dayMenu['Domingo'] }
     ];
 
@@ -149,7 +151,7 @@ const Menu = () => {
                                                     <img src={product.image || '/path/to/placeholder.png'} alt={product.title || 'Producto'} />
                                                 </div>
                                                 <div className="product-info">
-                                                    <h3 className="product-title">{product.title || 'Título del producto'}</h3>
+                                                    <h3 className="product-title">{product.name || 'Título del producto'}</h3>
                                                     <p className="product-description">{product.description || 'Descripción del producto'}</p>
                                                     <p className="product-price">${(product.price || 0).toFixed(2)}</p>
                                                     <button className="add-to-cart-button" onClick={() => addToCart(product)}>Añadir al carrito</button>

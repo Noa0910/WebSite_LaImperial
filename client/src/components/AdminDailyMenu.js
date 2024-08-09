@@ -1,12 +1,13 @@
+// src/components/AdminDailyMenu.js
 import React, { useState, useEffect } from 'react';
 import { getDailyMenu, addMenuItem, updateMenuItem, deleteMenuItem } from '../services/menuService';
-import '../styles/AdminProductManagement.css';
+import '../styles/AdminDailyMenu.css';
 
 const AdminDailyMenu = () => {
     const [menuItems, setMenuItems] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
-    const [newItem, setNewItem] = useState({ name: '', description: '', price: '' });
+    const [newItem, setNewItem] = useState({ day: '', firstMenu: '', secondMenu: '', price: '' });
 
     useEffect(() => {
         async function fetchMenuItems() {
@@ -14,7 +15,7 @@ const AdminDailyMenu = () => {
                 const menuData = await getDailyMenu();
                 setMenuItems(menuData);
             } catch (error) {
-                console.error("Failed to fetch menu items", error);
+                console.error('Failed to fetch menu items', error);
             }
         }
         fetchMenuItems();
@@ -25,15 +26,16 @@ const AdminDailyMenu = () => {
             await deleteMenuItem(itemId);
             setMenuItems(menuItems.filter(item => item._id !== itemId));
         } catch (error) {
-            console.error("Failed to delete menu item", error);
+            console.error('Failed to delete menu item', error);
         }
     };
 
     const handleChange = (e) => {
+        const { name, value } = e.target;
         if (isEditing) {
-            setSelectedItem({ ...selectedItem, [e.target.name]: e.target.value });
+            setSelectedItem({ ...selectedItem, [name]: value });
         } else {
-            setNewItem({ ...newItem, [e.target.name]: e.target.value });
+            setNewItem({ ...newItem, [name]: value });
         }
     };
 
@@ -46,12 +48,12 @@ const AdminDailyMenu = () => {
                 setSelectedItem(null);
             } else {
                 await addMenuItem(newItem);
-                setNewItem({ name: '', description: '', price: '' });
+                setNewItem({ day: '', firstMenu: '', secondMenu: '', price: '' });
             }
             const menuData = await getDailyMenu();
             setMenuItems(menuData);
         } catch (error) {
-            console.error("Failed to update or add menu item", error);
+            console.error('Failed to update or add menu item', error);
         }
     };
 
@@ -61,42 +63,58 @@ const AdminDailyMenu = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Description</th>
+                        <th>Day</th>
+                        <th>First Menu</th>
+                        <th>Second Menu</th>
                         <th>Price</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {menuItems.map(item => (
-                        <tr key={item._id}>
-                            <td>{item.name}</td>
-                            <td>{item.description}</td>
-                            <td>${item.price}</td>
-                            <td>
-                                <button onClick={() => {
-                                    setSelectedItem(item);
-                                    setIsEditing(true);
-                                }}>Edit</button>
-                                <button onClick={() => handleDelete(item._id)}>Delete</button>
-                            </td>
+                    {menuItems.length > 0 ? (
+                        menuItems.map(item => (
+                            <tr key={item._id}>
+                                <td>{item.day}</td>
+                                <td>{item.firstMenu}</td>
+                                <td>{item.secondMenu}</td>
+                                <td>${item.price}</td>
+                                <td>
+                                    <button className="edit-button" onClick={() => {
+                                        setSelectedItem(item);
+                                        setIsEditing(true);
+                                    }}>Edit</button>
+                                    <button className="delete-button" onClick={() => handleDelete(item._id)}>Delete</button>
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="5">No menu items available</td>
                         </tr>
-                    ))}
+                    )}
                 </tbody>
             </table>
             <form onSubmit={handleSubmit}>
                 <h2>{isEditing ? 'Edit Menu Item' : 'Add Menu Item'}</h2>
-                <label>Name:</label>
+                <label>Day:</label>
                 <input
                     type="text"
-                    name="name"
-                    value={isEditing ? selectedItem.name : newItem.name}
+                    name="day"
+                    value={isEditing ? selectedItem.day : newItem.day}
                     onChange={handleChange}
                 />
-                <label>Description:</label>
-                <textarea
-                    name="description"
-                    value={isEditing ? selectedItem.description : newItem.description}
+                <label>First Menu:</label>
+                <input
+                    type="text"
+                    name="firstMenu"
+                    value={isEditing ? selectedItem.firstMenu : newItem.firstMenu}
+                    onChange={handleChange}
+                />
+                <label>Second Menu:</label>
+                <input
+                    type="text"
+                    name="secondMenu"
+                    value={isEditing ? selectedItem.secondMenu : newItem.secondMenu}
                     onChange={handleChange}
                 />
                 <label>Price:</label>
@@ -106,7 +124,7 @@ const AdminDailyMenu = () => {
                     value={isEditing ? selectedItem.price : newItem.price}
                     onChange={handleChange}
                 />
-                <button type="submit">{isEditing ? 'Save' : 'Add'}</button>
+                <button className="submit-button" type="submit">{isEditing ? 'Save' : 'Add'}</button>
             </form>
         </div>
     );
