@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getUsers, deleteUser, updateUser } from '../services/authService';
+import { getUsers, deleteUser, updateUser } from '../services/authService'; // Asegúrate de que esta ruta sea correcta
 import '../styles/AdminUserManagement.css';
 
 const AdminUserManagement = () => {

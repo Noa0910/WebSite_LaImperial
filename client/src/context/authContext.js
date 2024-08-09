@@ -1,5 +1,3 @@
-// client/src/context/authContext.js
-
 import React, { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login as loginService, logout as logoutService, getUserProfile } from '../services/authService';
@@ -12,13 +10,13 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchUser = () => {
+        const fetchUser = async () => {
             try {
                 const userProfile = getUserProfile();
                 setUser(userProfile);
             } catch (error) {
                 console.error('Error fetching user profile:', error);
-                setUser(null);
+                setUser(null); // Limpiar el estado del usuario en caso de error
             } finally {
                 setLoading(false);
             }
