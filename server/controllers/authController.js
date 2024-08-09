@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
-    const { username, password, name, phone, role } = req.body;
+    const { username, password, name, phone, address, role } = req.body; // Incluye address en el destructuring
 
     try {
         const existingUser = await User.findOne({ username });
@@ -18,6 +18,7 @@ exports.register = async (req, res) => {
             password: hashedPassword,
             name,
             phone,
+            address, // Agrega address al nuevo usuario
             role: role && ['admin', 'client'].includes(role) ? role : 'client'
         });
         await newUser.save();
@@ -50,7 +51,8 @@ exports.login = async (req, res) => {
                 id: user._id, 
                 username: user.username, 
                 role: user.role, 
-                name: user.name 
+                name: user.name,
+                address: user.address // Incluye address en la respuesta
             } 
         });
     } catch (error) {

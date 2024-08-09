@@ -1,5 +1,3 @@
-// server/models/User.js
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -8,6 +6,7 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     name: { type: String },
     phone: { type: String },
+    address: { type: String },  // Nuevo campo agregado
     role: { 
         type: String, 
         enum: ['admin', 'client'], 

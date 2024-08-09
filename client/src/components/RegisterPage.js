@@ -9,6 +9,7 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState(''); // Estado para la dirección
     const [acceptPolicy, setAcceptPolicy] = useState(false); // Estado para manejar el checkbox
     const [error, setError] = useState('');
     const navigate = useNavigate(); // Hook para redireccionar
@@ -26,7 +27,8 @@ const RegisterPage = () => {
                 username,
                 password,
                 name,
-                phone
+                phone,
+                address  // Enviar la dirección al servidor
             });
             navigate('/login'); // Redirige a la página de inicio de sesión
         } catch (error) {
@@ -88,6 +90,18 @@ const RegisterPage = () => {
                                 className="form-control"
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="mb-3">
+                            <label htmlFor="address" className="form-label">Dirección:</label>
+                            <input
+                                type="text"
+                                id="address"
+                                name="address"
+                                className="form-control"
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
                             />
                         </div>
 
