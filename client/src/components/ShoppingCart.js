@@ -1,10 +1,17 @@
+// src/components/ShoppingCart.js
 import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import { FaShoppingCart } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import '../styles/ShoppingCart.css';
-import { FaShoppingCart } from 'react-icons/fa'; // Importa el icono de FontAwesome
 
 const ShoppingCart = () => {
     const { cart, removeFromCart, decreaseQuantity, addToCart, getCartTotal } = useContext(CartContext);
+    const navigate = useNavigate();
+
+    const handleCheckout = () => {
+        navigate('/checkout');
+    };
 
     if (cart.length === 0) {
         return (
@@ -15,7 +22,7 @@ const ShoppingCart = () => {
                     <p>El carrito está vacío</p>
                     <p>Añade productos a tu carrito para verlos aquí.</p>
                 </div>
-                <button className="checkout-button">Realizar Pedido</button>
+                <button className="checkout-button" disabled>Realizar Pedido</button>
             </div>
         );
     }
@@ -28,10 +35,7 @@ const ShoppingCart = () => {
                     <li key={product._id} className="cart-item">
                         <h3>{product.title || 'Menú del Día'}</h3>
                         <p>${product.price.toFixed(2)}</p>
-                        {/* Muestra la descripción si existe, o una predeterminada si no */}
-                        <p>
-                            {product.description ? product.description : 'Deliciosa comida colombiana'}
-                        </p>
+                        <p>{product.description || 'Deliciosa comida colombiana'}</p>
                         <div className="quantity-controls">
                             <button onClick={() => decreaseQuantity(product._id)}>-</button>
                             <span className="quantity">{product.quantity}</span>
@@ -46,7 +50,7 @@ const ShoppingCart = () => {
             <div className="cart-total">
                 <h2>Total: ${getCartTotal().toFixed(2)}</h2>
             </div>
-            <button className="checkout-button">Realizar Pedido</button>
+            <button className="checkout-button" onClick={handleCheckout}>Realizar Pedido</button>
         </div>
     );
 };

@@ -1,3 +1,4 @@
+// src/App.js
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
@@ -10,7 +11,8 @@ import VisitVirtualPage from './components/VisitVirtualPage';
 import ShoppingCart from './components/ShoppingCart';
 import RegisterPage from './components/RegisterPage';
 import LoginPage from './components/LoginPage';
-import AdminDashboard from './components/AdminDashboard'; // Importa el nuevo componente
+import AdminDashboard from './components/AdminDashboard';
+import CheckoutPage from './components/CheckoutPage'; // Importa el nuevo componente
 import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './context/authContext';
 
@@ -27,9 +29,9 @@ const App = () => {
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/visitavirtual" element={<VisitVirtualPage />} />
                         <Route path="/cart" element={<ShoppingCart />} />
+                        <Route path="/checkout" element={<CheckoutPage />} /> {/* Nueva ruta */}
                         <Route path="/register" element={<RegisterPage />} />
                         <Route path="/login" element={<LoginPage />} />
-                        {/* Ruta privada para el panel de administración */}
                         <Route path="/admin/*" element={<PrivateRoute element={AdminDashboard} roles={['admin']} />} />
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
